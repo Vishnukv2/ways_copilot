@@ -24,7 +24,7 @@ db_connection_string = (
     "PWD=PMO_log360!x4;"
 )
 
-@app.route("/generate_sessionid",methods=['GET'])
+@app.route("/api/generate_sessionid",methods=['GET'])
 def generate_session_id():
     return str(uuid.uuid4())
 
@@ -354,7 +354,7 @@ def store_chat(response,user,session_id):
     
 chatbot_model= Rupam_copilot()
 
-@app.route('/Rupam', methods=['POST'])
+@app.route('/api/Rupam', methods=['POST'])
 def chat():
     global conversation_history
     global session_start_time
