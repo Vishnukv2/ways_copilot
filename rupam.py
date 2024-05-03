@@ -24,7 +24,7 @@ db_connection_string = (
     "PWD=PMO_log360!x4;"
 )
 
-@app.route("/api/Waysbot/generate_sessionid",methods=['GET'])
+@app.route("/generate_sessionid",methods=['GET'])
 def generate_session_id():
     return str(uuid.uuid4())
 
