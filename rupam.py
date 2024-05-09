@@ -385,7 +385,7 @@ def chat():
 chatbot_model1= vishnu.vishnu_copilot()  
 
 @app.route('/api/Vishnu', methods=['POST'])
-def chat():
+def chat_vishnu():
     global conversation_history
     global session_start_time
     start_time = time.time()
