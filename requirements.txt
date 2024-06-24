@@ -38,7 +38,6 @@ mypy-extensions==1.0.0
 openai==1.28.1
 orjson==3.10.3
 packaging==23.2
-pandas==2.2.2
 pydantic==2.7.1
 pydantic_core==2.18.2
 PyPDF2==3.0.1
