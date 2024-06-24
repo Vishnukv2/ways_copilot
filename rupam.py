@@ -12,6 +12,7 @@ load_dotenv()
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={"/api/*": {"origins": "*"}})
+os.environ["openai_api_key"] = os.getenv("openai_key")
 text_chunks = []
 
 class PromptTemplate:
