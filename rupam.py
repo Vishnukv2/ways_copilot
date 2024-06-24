@@ -12,7 +12,7 @@ load_dotenv()
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={"/api/*": {"origins": "*"}})
-api_key=os.getenv("openai_key")
+api_key=os.getenv("OPENAI_API_KEY")
 os.environ["openai_api_key"] = api_key
 text_chunks = []
 
