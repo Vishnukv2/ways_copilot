@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot- Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/sidebar.js"></script>
+    <script src="./components/chat.js"></script>
+    <script src="./components/dialog.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#171717] text-white min-h-screen w-screen">
+    <dialog-box></dialog-box>
+    <main class="grid grid-cols-[0.25fr_0.5fr_0.25fr] grid-rows-[auto_1fr] max-w-screen-2xl mx-auto h-screen">
+        <nav-bar></nav-bar>
+        <side-bar></side-bar>
+        <div class="main-content px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
+            <h1 class="text-4xl font-semibold">Project Documentation</h1>
+        </div>
+        <chat-box></chat-box>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

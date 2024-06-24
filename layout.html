@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot- Documentation</title>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/sidebar.js"></script>
+    <script src="./components/chat.js"></script>
+    <script src="./components/dialog.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#171717] text-white min-h-screen w-screen">
+    <dialog-box></dialog-box>
+    <main class="grid grid-cols-[0.25fr_0.5fr_0.25fr] grid-rows-[auto_1fr] max-w-screen-2xl mx-auto h-screen">
+        <nav-bar></nav-bar>
+        <side-bar></side-bar>
+        <div class="main-content px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
+            <h1 class="text-4xl font-semibold">Project Documentation</h1>
+            <div class="mt-4 ml-4">
+                <div class="mt-4 ml-4">
+                    <h1 class="text-3xl">WEBSOURCECODE/FRONTEND/SRC/APP/(USER) <br> /LAYOUT.TSX</h1><br>
+
+                    <h2 class="mb-2 text-2xl font-semibold">Component Structure</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The UserLayout component is a functional component that takes children as a prop and renders
+                        them between a navbar and a footer. The NextTopLoader component is included to provide a visual
+                        indicator during page transitions.
+
+
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">Props</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        <li>
+                            children (React.ReactNode): The content to be rendered between the navbar and footer.
+                        </li><br>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">Functionality</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        1. NextTopLoader<br>
+                        <li>
+                            Purpose: Provides a visual indication of page loading. It is configured to: <br>
+                            o Not show a spinner (showSpinner={false}) <br>
+                            o Use a custom color (color='#f9cf2b') <br><br>
+                        </li>
+                    </ul>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        2. Layout Structure<br>
+                        <li>
+                            &lt;main&gt; Element: <br>
+                            Class Names: flex, flex-col, max-w-screen-2xl, mx-auto <br>
+                            => flex and flex-col ensure that the content is displayed in a columnar layout. <br>
+                            => max-w-screen-2xl limits the width of the content to a maximum of 2xl screen size. <br>
+                            => mx-auto centers the content horizontally.
+                        </li>
+                        <li>
+                            Navbar Component: Provides navigation links and branding for the application.
+                        </li>
+                        <li>
+                            Footer Component: Displays footer content, such as links, copyright information, and
+                            additional navigation options.
+                        </li><br>
+
+                    </ul>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        3. Component Rendering<br>
+                        <li>
+                            The UserLayout component returns a fragment (&lt;&gt;) containing the NextTopLoader and the
+                            main element. The main element wraps the Navbar, children, and Footer components to ensure
+                            consistent layout across pages.
+                        </li><br>
+                        <h2 class="mb-2 text-2xl font-semibold">Usage</h2><br>
+                        The UserLayout component is used to wrap user-facing pages in the application. By including this
+                        component at the top level of a page, you ensure that the navbar and footer are consistently
+                        rendered, and the page transition loader is displayed.
+                </div>
+            </div>
+        </div>
+        <chat-box></chat-box>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

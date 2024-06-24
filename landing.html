@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot- Documentation</title>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/sidebar.js"></script>
+    <script src="./components/chat.js"></script>
+    <script src="./components/dialog.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#171717] text-white min-h-screen w-screen">
+    <dialog-box></dialog-box>
+    <main class="grid grid-cols-[0.25fr_0.5fr_0.25fr] grid-rows-[auto_1fr] max-w-screen-2xl mx-auto h-screen">
+        <nav-bar></nav-bar>
+        <side-bar></side-bar>
+        <div class="main-content w-full px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
+            <h1 class="text-4xl font-semibold">Project Documentation</h1>
+            <div class=" w-full mt-4 ml-4">
+                <div class=" w-full mt-4 ml-4">
+                    <h1 class="text-3xl">Landing Page</h1>
+
+                    <h2 class="mb-2 text-2xl font-semibold">Page Structure</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The landing page is composed of various sections, each encapsulated in a functional
+                        component. The SectionWrapper component is used to wrap the sections and apply common
+                        styling.
+                    </ul>
+                    <h2 class="mb-2 text-xl font-semibold">1. Components</h2><br>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        <li>
+                            Hero: Represents the hero section of the landing page, typically including a
+                            prominent message or call to action.
+                            <code>&lt;Hero/&gt;&lt;SectionWrapper className={cn('w-full')}&gt;&lt;/SectionWrapper&gt;</code>
+
+                        </li>
+                        <li>
+                            AboutUs: Provides information about the company or service, including history, mission,
+                            and values <br>
+                            <code>&lt;AboutUs /&gt; {/* &lt;ChooseUs /&gt; */}</code>
+
+                        </li>
+                        <li>
+                            Categories: Displays various categories relevant to the website's offerings, helping users
+                            navigate to specific sections of interest. <br>
+                            <code>&lt;Categories /&gt; {/* &lt;Products /&gt; */}</code>
+                        </li>
+                        <li>
+                            Inspiration: Offers inspirational content or ideas related to the website's theme, engaging
+                            users with creative or motivating material. <br>
+                            <code>&lt;Inspiration /&gt;</code>
+                        </li>
+                        <li>
+                            Working: Explains the workflow or process of the service/product offered, giving users
+                            an understanding of how it works. <br>
+                            <code>&lt;Working /&gt;</code>
+
+                        </li>
+                        <li>
+                            ClientReview: Showcases reviews and testimonials from clients, providing social proof and
+                            building trust with potential customers. <br>
+                            <code>&lt;ClientReview /&gt;</code>
+                        </li>
+                        <li>
+                            Newsletter: Encourages users to sign up for a newsletter to receive updates, news, or
+                            promotional content from the website. <br>
+                            <code>&lt;Newsletter /&gt;</code>
+                        </li>
+                        <li>
+                            ChatBot: Integrates a chatbot for user interaction, allowing users to ask questions and
+                            receive immediate assistance. <br>
+                            <code>&lt;ChatBot /&gt;</code>
+
+                        </li>
+                    </ul>
+                    <h2 class="mb-2 text-xl font-semibold">2. Optional Components</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        These components are included in the code but commented out, indicating they are optional or
+                        to be included in the future: <br><br>
+                        <li>
+                            <code>
+                                ChooseUs:
+                            {/*
+                            &lt;ChooseUs /&gt; /}
+                            </code>
+
+                        </li>
+                        <li>
+                            Products:
+                            {/ &lt;Products /&gt; */}
+                        </li>
+                    </ul><br>
+                    <h2 class="mb-2 text-xl font-semibold">3. SectionWrapper</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        &lt;SectionWrapper className={cn('w-full')}&gt; <br>
+                        <li>
+                            Purpose: A wrapper component to apply common styles and layout properties to all sections.
+                            It uses the cn utility function to conditionally apply classes.
+                        </li>
+                        <li>
+                            Props: <br>className (string): Additional classes to be applied to the wrapper.
+                        </li>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">Utility Functions</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        1. cn
+                        <li>
+                            Purpose: A utility function from @/lib/utils used to conditionally combine class names. <br>
+                            import { cn } from '@/lib/utils';
+
+                        </li><br>
+                        <h2 class="mb-2 text-2xl font-semibold">page.tsx</h2><br>
+                        import AboutUs from '@/components/custom/AboutUs';
+                        import Categories from '@/components/custom/Categories';
+                        import ChatBot from '@/components/custom/ChatBot';
+                        import ClientReview from '@/components/custom/ClientReview';
+                        import Hero from '@/components/custom/Hero';
+                        import Inspiration from '@/components/custom/Inspiration';
+                        import Newsletter from '@/components/custom/Newsletter';
+                        import SectionWrapper from '@/components/custom/SectionWrapper';
+                        import Working from '@/components/custom/Working';
+                        import { cn } from '@/lib/utils';
+
+                        export default function Index() {
+                        return (
+                        &lt;&gt;
+                        &lt;Hero /&gt;
+                        &lt;SectionWrapper className={cn('w-full')}&gt;
+                        &lt;AboutUs /&gt;
+                        {/* &lt;ChooseUs /&gt; */}
+                        &lt;Categories /&gt;
+                        {/* &lt;Products /&gt; */}
+                        &lt;Inspiration /&gt;
+                        &lt;Working /&gt;
+                        &lt;ClientReview /&gt;
+                        &lt;Newsletter /&gt;
+                        &lt;ChatBot /&gt;
+                        &lt;/SectionWrapper&gt;
+                        &lt;/&gt;
+                        );
+                        }
+                        <br><br>
+                        <h2 class="mb-2 text-2xl font-semibold">layout.tsx</h2><br>
+                        import Footer from '@/components/custom/Footer';
+import Navbar from '@/components/custom/Navbar';
+import NextTopLoader from 'nextjs-toploader';
+import React from 'react';
+
+export default function UserLayout({ children }: Readonly&lt;&lt;{ children: React.ReactNode; }&gt;) {
+    return (
+        &lt;&gt;
+            &lt;NextTopLoader
+                showSpinner={false}
+                color='#f9cf2b'
+            /&gt;
+            &lt;main className="flex flex-col max-w-screen-2xl mx-auto"&gt;
+                &lt;Navbar /&gt;
+                {children}
+                &lt;Footer /&gt;
+            &lt;/main&gt;
+        &lt;/&gt;
+    )
+}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <chat-box></chat-box>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

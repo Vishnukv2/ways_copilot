@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot- Documentation</title>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/sidebar.js"></script>
+    <script src="./components/chat.js"></script>
+    <script src="./components/dialog.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#171717] text-white min-h-screen w-screen">
+    <dialog-box></dialog-box>
+    <main class="grid grid-cols-[0.25fr_0.5fr_0.25fr] grid-rows-[auto_1fr] max-w-screen-2xl mx-auto h-screen">
+        <nav-bar></nav-bar>
+        <side-bar></side-bar>
+        <div class="main-content px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
+            <h1 class="text-4xl font-semibold">Project Documentation</h1>
+            <div class="mt-4 ml-4">
+                <div class="mt-4 ml-4">
+                    <h1 class="text-3xl">WEBSOURCECODE/FRONTEND/SRC/APP/(USER) /PAY/PAGE.TSX</h1><br>
+                    The Pay component is a payment interface that allows users to enter their card details and confirm
+                    payment. The component also fetches payment details (amount and phase) based on a query parameter
+                    (pid) from the URL. <br>
+                    <h2 class="mb-2 text-2xl font-semibold">Component State</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The component maintains the following state variables:
+                        <li>cardNumber (string): Stores the card number entered by the user.</li>
+                        <li>cardHolderName (string): Stores the cardholder's name.</li>
+                        <li>cvvNumber (string): Stores the CVV number.</li>
+                        <li>expiryDate (object): Stores the month and year of the card's expiry date.</li>
+                        <li>loading (boolean): Indicates if the page is in a loading state.</li>
+                        <li>amount (string): Stores the amount to be paid.</li>
+                        <li>phase (string): Stores the current phase of payment.</li>
+                    </ul><br>
+                    <h2 class="mb-2 text-2xl font-semibold">Component Structure</h2>
+                    1. useEffect Hook
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        <li>
+                            Purpose: Fetches payment details when the component mounts if the pid query parameter is
+                            present.
+                        </li>
+                        <li>
+                            Function: <br>
+                            o Calls getPaymentDetails which fetches data from the API. <br>
+                            o Sets amount and phase based on the fetched data. <br>
+                            <code>useEffect(() =&gt; {
+                                async function getPaymentDetails() {
+                                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customer/payment/amount
+                                /${searchParams.get("pid")})}`, { method: 'GET',</code>
+                        </li><br>
+                        2. handleSubmit Function
+                        <li>Purpose: Handles form submission to confirm payment.</li>
+                        <li>Parameters: e (React.FormEvent&lt;HTMLFormElement&gt;)</li>
+                        <li>Functionality: <br>
+                            o Prevents the default form submission. <br>
+                            o Sets loading to true. <br>
+                            o Sends a POST request to the API to confirm payment, including the paymentId
+                            from the pid query parameter and the phase (if it is "design"). <br>
+                            o Displays a success or error toast based on the response. <br>
+                            o Redirects to a thank-you page if the payment is successful. <br>
+                            <code>const handleSubmit = async (e: React.FormEvent&lt;HTMLFormElement&gt;) =&gt; { e.preventDefault();</code>
+                        </li><br>
+                        3. JSX Structure
+                        <li>Loading Indicator: Displays a spinner overlay when loading is true.</li>
+                        <li>Main Section:
+                            o Heading and Description: Displays the payment method heading and a brief description. <br>
+                            o Back Button: Allows users to navigate back to the previous page. <br>
+                            o Payment Method Selection: Displays options for Net Banking and Credit/Debit Card. <br>
+                            o Form: <br>
+                            =>Card Number Input: Input field for entering the card number with validation for 16 digits.
+                            <br>
+                            =>Card Holder Name Input: Input field for entering the cardholder's name. <br>
+                            =>CVV Number Input: Input field for entering the CVV number. <br>
+                            =>Expiry Date Input: Input fields for entering the card's expiry month and year. <br>
+                            =>Confirm & Pay Button: Submits the form to confirm payment. <br>
+                            o Card Design Preview: Displays a preview of the card design with the cardholder's name,
+                            last four digits of the card number, and expiry date. <br>
+                            o Amount to Pay: Displays the amount to be paid.
+                        </li><br>
+                    </ul>
+                    <h1 class="text-3xl">WEBSOURCECODE/FRONTEND/SRC/APP/(USER) /PAY/LAYOUT.TSX</h1><br>
+                    <h2 class="mb-2 text-2xl font-semibold">Component State</h2>
+                    <h2 class="mb-2 text-2xl font-semibold">Import Statements</h2>
+                    The component imports Suspense from react.
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        import React, { Suspense } from 'react'
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">PayLayout Component</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        <li>
+                            Purpose: The PayLayout component wraps its children with a Suspense component.
+                        </li>
+                        <li>
+                            Parameters: <br>
+                            => children (React.ReactNode): The child components to be rendered within the layout.
+                        </li>
+                        <li>
+                            Functionality: <br>
+                            => Wraps children within Suspense, which allows any asynchronous loading in the children to
+                            be handled gracefully.
+                        </li>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">Usage</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The PayLayout component is used to wrap the main content of the payment page. This ensures that
+                        any child components that need to load data asynchronously can do so without blocking the entire
+                        rendering process.
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">Benefits of Using Suspense</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        <li>
+                            Code Splitting: Helps in code splitting by allowing parts of the component tree to load
+                            separately.
+                        </li>
+                        <li>
+                            Better User Experience: Improves user experience by preventing parts of the UI from being
+                            blocked while waiting for data to load.
+                        </li>
+                        <li>
+                            Error Boundaries: Can be combined with error boundaries to handle errors gracefully when
+                            data loading fails.
+                        </li>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">Considerations</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        <li>
+                            Fallbacks: While using Suspense, it's often useful to provide a fallback component to
+                            display while the content is loading. This can be achieved using the fallback prop on
+                            Suspense.
+                        </li>
+                        <li>
+                            Error Handling: Ensure that error boundaries are in place to catch any errors that might
+                            occur during data loading.
+                        </li><br><br>
+                        <h2 class="mb-2 text-2xl font-semibold">page.tsx</h2><br>
+                        "use client";
+
+                        import React, { useEffect, useState } from "react";
+                        import { BsCreditCard2Back } from "react-icons/bs";
+                        import { AiOutlineLoading3Quarters } from "react-icons/ai";
+                        import { useToast } from "@/components/ui/use-toast";
+                        import Image from "next/image";
+                        import { Button } from "@/components/ui/button";
+                        import { useRouter, useSearchParams } from "next/navigation";
+                        import { cn } from "@/lib/utils";
+                        import { useCookies } from "@/hooks/useCookies";
+
+                        export default function Pay() {
+                        const [cardNumber, setCardNumber] = useState("");
+                        const [cardHolderName, setCardHolderName] = useState("");
+                        const [cvvNumber, setCvvNumber] = useState("");
+                        const [expiryDate, setExpiryDate] = useState({
+                        month: "",
+                        year: "",
+                        });
+                        const [loading, setLoading] = useState(false);
+                        const { toast } = useToast();
+                        const router = useRouter();
+                        const searchParams = useSearchParams();
+                        const cookies = useCookies();
+                        const [amount, setAmount] = useState("");
+                        const [phase, setPhase] = useState("");
+
+                        useEffect(() =&gt; {
+                        async function getPaymentDetails() {
+                        const response = await
+                        fetch(${process.env.NEXT_PUBLIC_API_URL}/customer/payment/amount/${searchParams.get("pid")})}, {
+                        method: 'GET',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': Bearer ${cookies?.get('token')}
+                        },
+                        cache: 'no-store'
+                        });
+                        const data = await response.json();
+                        if (response.ok) {
+                        setAmount(data.amountPaid as string);
+                        setPhase(data.phase as string);
+                        }
+                        }
+                        if (searchParams.get("pid")) {
+                        getPaymentDetails();
+                        }
+                        }, []);
+
+                        const handleSubmit = async (e: React.FormEvent&lt;HTMLFormElement&gt;) =&gt; {
+                        e.preventDefault();
+                        try {
+                        setLoading(true);
+                        const response = await fetch(${process.env.NEXT_PUBLIC_API_URL}/customer/payment/confirm${phase
+                        === "design" ? "/design" : ""}, {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': Bearer ${cookies?.get('token')}
+                        },
+                        body: JSON.stringify({ paymentId: searchParams.get("pid") })
+                        });
+                        const data = await response.json();
+                        if (response.ok) {
+                        setLoading(false);
+                        toast({
+                        title: "Payment Successful",
+                        });
+                        router.push(/customer/thank-you?id=${data.paymentId});
+                        } else {
+                        setLoading(false);
+                        toast({
+                        title: "Error",
+                        description: "Something went wrong",
+                        variant: "destructive"
+                        });
+                        }
+                        } catch (error) {
+                        setLoading(false);
+                        toast({
+                        title: "Error",
+                        description: "Something went wrong",
+                        variant: "destructive"
+                        });
+                        console.error(error);
+                        }
+                        };
+
+                        return (
+                        &lt;section className={${loading && 'overflow-hidden'} min-h-screen max-w-screen-xl mx-auto
+                        w-full}&gt;
+                        {
+                        loading && (
+                        &lt;div className="absolute bg-black bg-opacity-50 inset-0 z-[100]"&gt;
+                        &lt;div className="flex justify-center items-center h-full"&gt;
+                        &lt;AiOutlineLoading3Quarters className="text-5xl text-white animate-spin" /&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                        )
+                        }
+
+                        &lt;div className="relative"&gt;
+                        &lt;div className="border rounded-lg p-7 md:p-14"&gt;
+                        &lt;div className="text-center "&gt;
+                        &lt;h3 className="text-3xl font-bold"&gt;Payment Method&lt;/h3&gt;
+                        &lt;p className="text-xs mt-4 text-gray-500"&gt;
+                        Select your payment method and enter your payment information.
+                        &lt;/p&gt;
+                        &lt;/div&gt;
+
+                        &lt;Button variant={"secondary"} className={cn('top-12 right-8 flex absolute')} onClick={()
+                        =&gt; { router.back() }}&gt;back&lt;/Button&gt;
+
+                        {/* Cards */}
+
+                        &lt;div className="flex flex-col md:!flex-row justify-between py-8"&gt;
+                        &lt;div className="w-full md:w-3/5 p-4"&gt;
+                        &lt;div className="w-3/5 flex"&gt;
+                        &lt;div className="flex justify-center items-center content-center text-sm border py-4 px-3
+                        hover:border-blue-600 bg-gray-200"&gt;
+                        &lt;BsCreditCard2Back className="hover:text-blue-600" /&gt;
+                        &lt;p className="ml-1 text-xs"&gt;Net Banking&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div className="flex justify-center items-center content-center text-sm border
+                        border-blue-600 py-4 px-3 hover:border-blue-600"&gt;
+                        &lt;BsCreditCard2Back className="hover:text-blue-600" /&gt;
+                        &lt;p className="ml-1 text-xs"&gt;Credit/Debit Card&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div className="flex justify-center items-center content-center text-sm border py-4 px-3
+                        hover:border-blue-600 bg-gray-200"&gt;
+                        &lt;BsCreditCard2Back className="hover:text-blue-600" /&gt;
+                        &lt;p className="ml-1 text-xs"&gt;Net Banking&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        {/* Card INPUT */}
+                        &lt;div className="bg-white rounded-lg mt-5 p-2"&gt;
+                        &lt;form onSubmit={handleSubmit}&gt;
+                        &lt;div className="mb-4"&gt;
+                        &lt;label
+                        htmlFor="cardNumber"
+                        className="block text-sm font-semibold mb-2"
+                        &gt;
+                        Card Number
+                        &lt;/label&gt;
+                        &lt;label
+                        htmlFor="cardNumber"
+                        className="block text-xs mb-2"
+                        &gt;
+                        Enter the 16- digit card number
+                        &lt;/label&gt;
+                        &lt;input
+                        type="text"
+                        id="cardNumber"
+                        placeholder="xxxx xxxx xxxx xxxx"
+                        value={cardNumber}
+                        onChange={(e) =&gt; setCardNumber(e.target.value)}
+                        className="w-full border rounded-lg p-2"
+                        required
+                        maxLength={16}
+                        minLength={16}
+                        pattern="[0-9]{16}"
+                        inputMode="numeric"
+                        /&gt;
+                        &lt;/div&gt;
+
+                        &lt;div className="mb-4"&gt;
+                        &lt;label
+                        htmlFor="cardHolderName"
+                        className="block text-sm font-semibold mb-2"
+                        &gt;
+                        Card Holder Name
+                        &lt;/label&gt;
+                        &lt;label
+                        htmlFor="cardHolderName"
+                        className="block text-xs mb-2"
+                        &gt;
+                        Enter Card holder name
+                        &lt;/label&gt;
+                        &lt;input
+                        type="text"
+                        id="cardHolderName"
+                        placeholder="Enter Card holder name"
+                        value={cardHolderName}
+                        onChange={(e) =&gt; setCardHolderName(e.target.value)}
+                        className="w-full border rounded-lg p-2"
+                        required
+                        /&gt;
+                        &lt;/div&gt;
+
+                        &lt;div className="mb-4 flex justify-between mt-6 "&gt;
+                        &lt;div&gt;
+                        &lt;label
+                        htmlFor="cvvNumber"
+                        className="block text-sm font-semibold mb-2"
+                        &gt;
+                        CVV Number
+                        &lt;/label&gt;
+                        &lt;label
+                        htmlFor="cvvNumber"
+                        className="block text-xs mb-2"
+                        &gt;
+                        Enter the 4-digit number
+                        &lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;input
+                        type="text"
+                        id="cvvNumber"
+                        placeholder=""
+                        value={cvvNumber}
+                        onChange={(e) =&gt; setCvvNumber(e.target.value)}
+                        className="border rounded-lg p-1"
+                        required
+                        /&gt;
+                        &lt;/div&gt;
+
+                        &lt;div className="mb-4 flex justify-between mt-6"&gt;
+                        &lt;div className="max-w-[13rem] sm:!max-w-[auto]"&gt;
+                        &lt;label
+                        htmlFor="expiryDate"
+                        className="block text-sm font-semibold mb-2"
+                        &gt;
+                        Expiry Date
+                        &lt;/label&gt;
+                        &lt;label
+                        htmlFor="expiryDate"
+                        className="block text-xs mb-2"
+                        &gt;
+                        Enter the Expiration date of the card
+                        &lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div className="flex flex-row items-center ml-4 gap-1"&gt;
+                        &lt;input
+                        type="text"
+                        id="expiryDate"
+                        placeholder=""
+                        value={expiryDate.month}
+                        onChange={(e) =&gt; setExpiryDate(prev =&gt; ({ ...prev, month: e.target.value }))}
+                        className="w-14 sm:w-20 border rounded-lg p-2"
+                        required
+                        /&gt;
+                        {` / `}
+                        &lt;input
+                        type="text"
+                        id="expiryDate"
+                        placeholder=""
+                        value={expiryDate.year}
+                        onChange={(e) =&gt; setExpiryDate(prev =&gt; ({ ...prev, year: e.target.value }))}
+                        className="w-14 sm:w-20 border rounded-lg p-2"
+                        required
+                        /&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+
+
+                        &lt;div className="text-center"&gt;
+                        &lt;button className="w-1/2 m-auto text-white mt-4 bg-[#000325] text-xs rounded-full py-4"&gt;
+                        Confirm & Pay
+                        &lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;/form&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        {/* card design */}
+                        &lt;div className="w-full md:w-2/5 p-4 flex flex-col justify-end"&gt;
+                        &lt;div className="w-[90%] md:w-[60%] bg-white p-4 md:p-8 m-auto flex flex-col shadow-md
+                        md:-mb-20 opacity-90 rounded-md"&gt;
+                        &lt;div className="p-2 flex justify-between"&gt;
+                        &lt;Image src="/assets/pngwing.svg" alt="pngwing" width="40" height="40" /&gt;
+                        &lt;Image src="/assets/contactless.svg" alt="contactless" width="40" height="40" /&gt;
+                        &lt;/div&gt;
+                        &lt;div className="text-center mt-7 font-semibold flex flex-col justify-center"&gt;
+                        &lt;p&gt;Card Holder name&lt;/p&gt;
+                        &lt;p className="mt-2"&gt;&lt;label className="-mt-2"&gt;.... .... ....
+                        &lt;/label&gt;3333&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div className="mt-7 p-2 flex justify-between"&gt;
+                        &lt;p&gt;9/12&lt;/p&gt;
+                        &lt;div&gt;
+                        &lt;Image src="/assets/visa.svg" alt="visa" width="40" height="40" /&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div className="w-[95%] md:w-[70%] m-auto h-[80%] bg-[#7fb9cc] flex flex-col justify-end"&gt;
+                        &lt;p className="text-center font-semibold mb-4"&gt;Amount to pay&lt;/p&gt;
+                        &lt;div className="py-4 px-5 border border-dashed border-t-2 flex justify-between w-full"&gt;
+                        &lt;p className="text-center text-lg font-semibold text-blue-700 mx-auto"&gt;INR
+                        {amount}&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/section&gt;
+                        );
+                        };
+                        <br>
+                        <h2 class="mb-2 text-2xl font-semibold">layout.tsx</h2>
+                        import React, { Suspense } from 'react' 
+                        export default function PayLayout({ children }: { children: React.ReactNode }) {
+                        return (
+                        &lt;Suspense&gt;
+                        {children}
+                        &lt;/Suspense&gt;
+                        )
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <chat-box></chat-box>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot- Documentation</title>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/sidebar.js"></script>
+    <script src="./components/chat.js"></script>
+    <script src="./components/dialog.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#171717] text-white min-h-screen w-screen">
+    <dialog-box></dialog-box>
+    <main class="grid grid-cols-[0.25fr_0.5fr_0.25fr] grid-rows-[auto_1fr] max-w-screen-2xl mx-auto h-screen">
+        <nav-bar></nav-bar>
+        <side-bar></side-bar>
+        <div class="main-content px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
+            <h1 class="text-4xl font-semibold">Project Documentation</h1>
+            <div class="mt-4 ml-4">
+                <div class="mt-4 ml-4">
+                    <h1 class="text-3xl">WEBSOURCECODE/FRONTEND/SRC/APP/Admin/ dashboard/PAGE.TSX</h1><br>
+                    <h2 class="mb-2 text-2xl font-semibold">Component Structure</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The Dashboard component is structured as follows: <br>
+                        export default function Dashboard() { return ( <br>
+                        &lt;div className='space-y-12'&gt; <br>
+                        &lt;h1 className='heading-1 text-xl underline decoration-4 decoration-primary
+                        underline-offset-[5px]'&gt;Dashboard&lt;/h1&gt; <br>
+                        &lt;AdminAnalytics /&gt; <br>
+                        &lt;AdminGraphicalAnalytics /&gt; <br>
+                        &lt;/div&gt; <br>
+                        ); <br>
+                        } <br>
+
+                        <li>Wrapper Div: The main container for the dashboard, which uses a space-y-12 class to add
+                            vertical spacing between elements.</li>
+                        <li>Heading: An h1 element that serves as the main title of the dashboard, styled with custom
+                            classes for decoration.</li>
+                        <li>AdminAnalytics Component: This component is included to display analytical data.</li>
+                        <li>AdminGraphicalAnalytics Component: This component is included to provide graphical
+                            representations of the data.</li>
+
+                    </ul><br>
+                    <h2 class="mb-2 text-2xl font-semibold">Child Components AdminAnalytics</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The AdminAnalytics component is responsible for displaying analytical data. It might include
+                        metrics such as user statistics, sales data, performance indicators, etc. The detailed
+                        implementation of this component is not provided here, but it should follow these guidelines:
+                        <li>
+                            Data Fetching: Retrieve data from the backend or an API.
+                        </li>
+                        <li>
+                            Data Presentation: Display the data in a readable and organized format (e.g., tables,
+                            summaries).
+                        </li>
+                        <li>
+                            Interactivity: Optionally include interactive elements like filters, search, or sorting
+                            options.
+                        </li><br>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">AdminGraphicalAnalytics</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The AdminGraphicalAnalytics component visualizes data using charts or graphs. It might include
+                        various types of visualizations such as bar charts, line charts, pie charts, etc. The detailed
+                        implementation of this component is not provided here, but it should follow these guidelines:
+                        <li>
+                            Data Fetching: Retrieve data from the backend or an API.
+                        </li>
+                        <li>
+                            Chart Library: Use a chart library (e.g., Chart.js, D3.js, Recharts) to create
+                            visualizations.
+                        </li>
+                        <li>
+                            Interactivity: Optionally include interactive elements like tooltips, zooming, or
+                            filtering options.
+                        </li><br>
+                    </ul>
+                    <h1 class="text-3xl">WEBSOURCECODE/FRONTEND/SRC/APP/Admin
+                        /dashboard/layout.TSX </h1><br>
+                    <h2 class="mb-2 text-2xl font-semibold">Component Structure </h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The AdminLayout component is structured as follows: <br>
+                        export default function AdminLayout({ children }: Readonly&lt;{ children: React.ReactNode }&gt;)
+                        { return (
+                        &lt; &gt;
+                        &lt;NextTopLoader showSpinner={false}
+                        color='#2563eb'
+                        /&gt;
+                        &lt;main className="admin max-w-screen-2xl mx-auto grid grid-cols-[auto_1fr]
+                        grid-rows-[auto_1fr] md:gap-8 bg-secondary h-screen w-screen relative isolate"&gt;
+                        &lt;header className="col-span-full"&gt;
+                        &lt;Navbar className="max-w-screen-2xl shadow-md" /&gt;
+                        &lt;/header&gt;
+                        &lt;AdminSidebar className="md:ml-8" /&gt;
+                        &lt;section className="bg-white shadow-md p-4 md:p-8 overflow-y-auto md:mr-8"&gt;
+                        {children}
+                        &lt;/section&gt;
+                        &lt;/main&gt;
+                        &lt;/ &gt;
+                        )
+                        }
+
+                        <li>
+                            NextTopLoader: This component provides a visual loading indicator at the top of the page
+                            whenever there are navigation changes or API calls.
+                        </li>
+                        <li>
+                            &lt;main&gt;: The main container for the layout, which uses a CSS grid layout to define the
+                            structure. <br>
+                            o header: Contains the Navbar component, which spans the full width of the layout. <br>
+                            o AdminSidebar: The sidebar component for admin-specific navigation, placed in the first
+                            column of the grid. <br>
+                            o section: The main content area where the child components (admin pages) are rendered. <br>
+                        </li><br>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold">Child Components </h2>
+                    <h2 class="mb-2 text-xl font-semibold">AdminSidebar</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The AdminSidebar component provides the navigation links for the admin section. It allows admins
+                        to navigate between different pages such as Dashboard, Users, Settings, etc. The detailed
+                        implementation of this component is not provided here, but it should include:
+                        <li>
+                            Navigation Links: Links or buttons for different admin pages.
+                        </li>
+                        <li>
+                            Active State: Highlight the currently active page.
+                        </li>
+                        <li>
+                            Responsive Design: Ensure the sidebar is accessible on different screen sizes.
+                        </li>
+                        <br>
+                    </ul>
+                    <h2 class="mb-2 text-xl font-semibold">Navbar</h2>
+                    The Navbar component represents the top navigation bar. It typically includes elements like:
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        <li>
+                            Logo: The company or application logo.
+                        </li>
+                        <li>
+                            Navigation Links: Links to different sections of the site.
+                        </li>
+                        <li>
+                            User Menu: Options for the logged-in admin, such as profile, settings, and logout.
+                        </li>
+                        <br>
+                    </ul>
+                    <h2 class="mb-2 text-xl font-semibold">Props</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The AdminLayout component accepts the following props:
+                        <li>
+                            children (React.ReactNode): The main content to be rendered inside the layout. This is
+                            typically the current admin page being viewed.
+                        </li>
+                        <br>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <chat-box></chat-box>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

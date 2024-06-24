@@ -1,0 +1,25 @@
+body,
+html {
+    color-scheme: dark;
+}
+
+.main-content {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin-top: 0.5em !important;
+        text-align: justify;
+    }
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+#otpDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
