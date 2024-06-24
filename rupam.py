@@ -58,7 +58,7 @@ def get_conversation_chain(vectorstore):
     )
     return conversation_chain
 
-@app.route('/upload_doc', methods=['POST'])
+@app.route('/api/upload_doc', methods=['POST'])
 def upload_pdf():
     global text_chunks, conversation
     pdf_docs = request.files.getlist('pdf_docs')
@@ -69,7 +69,7 @@ def upload_pdf():
     conversation = get_conversation_chain(vectorstore)
     return jsonify({'message': 'PDF uploaded and processed'})
 
-@app.route('/ask', methods=['POST'])
+@app.route('/api/ask', methods=['POST'])
 def ask_question():
     user_question = request.json.get('question')
     system_message = SystemMessage("You are a co-pilot for WaysAhead Global. You are a coding assistant. You Have a vast knowledge about their projects and can help their employees to optimize their projects by providing them with snippets of code from the context")
