@@ -9,7 +9,9 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain    
 import os
 load_dotenv()
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app, resources={"/api/*": {"origins": "*"}})
 text_chunks = []
 
 class PromptTemplate:
