@@ -72,7 +72,7 @@ def upload_pdf():
 @app.route('/ask', methods=['POST'])
 def ask_question():
     user_question = request.json.get('question')
-    system_message = SystemMessage("You are a co-pilot for WaysAhead Global.aYou are a coding assistant. You Have a vast knowledge about their projects and can help their employees to optimize their projects by providing them with snippets of code from the context")
+    system_message = SystemMessage("You are a co-pilot for WaysAhead Global. You are a coding assistant. You Have a vast knowledge about their projects and can help their employees to optimize their projects by providing them with snippets of code from the context")
     input_message = f"{system_message.to_json()}\n{user_question}"
     response = conversation.invoke({'question': input_message})
     latest_ai_message = None
