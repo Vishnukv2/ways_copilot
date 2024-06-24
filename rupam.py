@@ -12,7 +12,6 @@ load_dotenv()
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={"/api/*": {"origins": "*"}})
-os.environ["openai_api_key"] = os.getenv("openai_key")
 text_chunks = []
 
 class PromptTemplate:
@@ -46,7 +45,7 @@ def get_text_chunks(text):
     return chunks
 
 def get_vectorstore(text_chunks):
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(os.getenv("openai_key"))
     vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vectorstore
 
