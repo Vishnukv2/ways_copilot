@@ -58,7 +58,7 @@ def get_conversation_chain(vectorstore):
     )
     return conversation_chain
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload_doc', methods=['POST'])
 def upload_pdf():
     global text_chunks, conversation
     pdf_docs = request.files.getlist('pdf_docs')
