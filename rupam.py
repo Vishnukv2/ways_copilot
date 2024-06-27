@@ -95,7 +95,7 @@ def chat():
     if vector_store is None:
         return jsonify({"error": "PDF not uploaded or processed."}), 400
     data = request.json
-    user_input = data.get('user_input')
+    user_input = data.get('question')
     response = get_response(user_input, vector_store, chat_history)
     chat_history.append(HumanMessage(content=user_input))
     chat_history.append(AIMessage(content=response))
