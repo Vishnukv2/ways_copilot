@@ -1,92 +1,101 @@
 from flask import Flask, request, jsonify
-from dotenv import load_dotenv
-from PyPDF2 import PdfReader
-from langchain.text_splitter import CharacterTextSplitter
+from flask_cors import CORS
+from langchain_core.messages import AIMessage, HumanMessage
+from langchain_community.document_loaders import PyMuPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain_community.vectorstores import FAISS
-from langchain_openai import ChatOpenAI
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain    
+from dotenv import load_dotenv
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
 import os
 load_dotenv()
-from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={"/api/*": {"origins": "*"}})
 api_key=os.getenv("OPENAI_API_KEY")
 os.environ["openai_api_key"] = api_key
-text_chunks = []
 
-class PromptTemplate:
-    def __init__(self, template):
-        self.template = template
+def get_vectorstore_from_pdf(file_path):
+    loader = PyMuPDFLoader(file_path)
+    document = loader.load()
+    text_splitter = RecursiveCharacterTextSplitter()
+    document_chunks = text_splitter.split_documents(document)
+    vector_store = Chroma.from_documents(document_chunks, OpenAIEmbeddings())
 
-    def format(self, **kwargs):
-        return self.template.format(**kwargs)
+    return vector_store
 
-class SystemMessage:
-    def __init__(self, content):
-        self.content = content
+def get_context_retriever_chain(vector_store):
+    llm = ChatOpenAI()
+    
+    retriever = vector_store.as_retriever()
+    
+    prompt = ChatPromptTemplate.from_messages([
+      MessagesPlaceholder(variable_name="chat_history"),
+      ("user", "{input}"),
+      ("user", "Given the above conversation, generate a search query to look up in order to get information relevant to the conversation")
+    ])
+    
+    retriever_chain = create_history_aware_retriever(llm, retriever, prompt)
+    
+    return retriever_chain
+    
+def get_conversational_rag_chain(retriever_chain): 
+    llm = ChatOpenAI()
+    
+    prompt = ChatPromptTemplate.from_messages([
+      ("system", "You are the Co-pilot of WaysAhead Global , you help the company's employees with coding and any questions they have regarding WaysAhead's projects. You answer their queries based on the context:\n\n{context}"),
+      MessagesPlaceholder(variable_name="chat_history"),
+      ("user", "{input}"),
+    ])
+    
+    stuff_documents_chain = create_stuff_documents_chain(llm, prompt)
+    
+    return create_retrieval_chain(retriever_chain, stuff_documents_chain)
 
-    def to_json(self):
-        return {"role": "system", "message": self.content}
+def get_response(user_input, vector_store, chat_history):
+    retriever_chain = get_context_retriever_chain(vector_store)
+    conversation_rag_chain = get_conversational_rag_chain(retriever_chain)
+    
+    response = conversation_rag_chain.invoke({
+        "chat_history": chat_history,
+        "input": user_input
+    })
+    
+    return response['answer']
 
-
-def get_pdf_text(pdf_docs):
-    text = ""
-    for pdf in pdf_docs:
-        pdf_reader = PdfReader(pdf)
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-    return text
-
-def get_text_chunks(text):
-    text_splitter = CharacterTextSplitter(
-        separator="\n", chunk_size=1000, chunk_overlap=200, length_function=len
-    )
-    chunks = text_splitter.split_text(text)
-    return chunks
-
-def get_vectorstore(text_chunks):
-    embeddings = OpenAIEmbeddings()
-    vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
-    return vectorstore
-
-def get_conversation_chain(vectorstore):
-    llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0.5)
-    memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
-    conversation_chain = ConversationalRetrievalChain.from_llm(
-        llm=llm,
-        retriever=vectorstore.as_retriever(),
-        memory=memory,
-        chain_type="stuff",
-    )
-    return conversation_chain
+vector_store = None
+chat_history = [AIMessage(content="Hello, I am a bot. How can I help you?")]
 
 @app.route('/api/upload_doc', methods=['POST'])
 def upload_pdf():
-    global text_chunks, conversation
-    pdf_docs = request.files.getlist('pdf_docs')
-    raw_text = get_pdf_text(pdf_docs)
-    new_text_chunks = get_text_chunks(raw_text)
-    text_chunks.extend(new_text_chunks)
-    vectorstore = get_vectorstore(text_chunks)
-    conversation = get_conversation_chain(vectorstore)
-    return jsonify({'message': 'PDF uploaded and processed'})
+    global vector_store
+    try:
+        if 'file' not in request.files:
+            return jsonify({"error": "No file part"}), 400
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({"error": "No selected file"}), 400
+        if file:
+            file_path = f"temp_{file.filename}"
+            file.save(file_path)
+            vector_store = get_vectorstore_from_pdf(file_path)
+            os.remove(file_path)
+            
+            return jsonify({"message": "PDF processed successfully."})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/ask', methods=['POST'])
-def ask_question():
-    user_question = request.json.get('question')
-    system_message = SystemMessage("You are a co-pilot for WaysAhead Global. You are a coding assistant. You Have a vast knowledge about their projects and can help their employees to optimize their projects by providing them with snippets of code from the context")
-    input_message = f"{system_message.to_json()}\n{user_question}"
-    response = conversation.invoke({'question': input_message})
-    latest_ai_message = None
-    for message in response['chat_history']:
-        if message.type == 'ai':
-            latest_ai_message = message
-    if latest_ai_message:
-        return jsonify({'response': latest_ai_message.content})
-    else:
-        return jsonify({'error': 'No AI response found'})
-
+def chat():
+    global chat_history, vector_store
+    if vector_store is None:
+        return jsonify({"error": "PDF not uploaded or processed."}), 400
+    data = request.json
+    user_input = data.get('user_input')
+    response = get_response(user_input, vector_store, chat_history)
+    chat_history.append(HumanMessage(content=user_input))
+    chat_history.append(AIMessage(content=response))
+    return jsonify({"response": response})
 if __name__ == '__main__':
     app.run(debug=False)
