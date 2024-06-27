@@ -1,7 +1,9 @@
 const navbar = `
-<a href="copilot.html"><img class="w-10 h-10" src="logo.png" alt=""></a>
+<a href="index.html"><img class="w-10 h-10" src="logo.png" alt=""></a>
 <hr class="w-[1px] h-[90%] bg-white">
-<p class="font-semibold">WaysAhead's CoPilot</p>
+<p class="font-bold text-3xl">WaysAhead's CoPilot</p>
+<hr class="w-[1px] h-[90%] bg-white">
+<p class="font-semibold text-2xl">Your AI Companion</p>
 `;
 
 class Navbar extends HTMLElement {

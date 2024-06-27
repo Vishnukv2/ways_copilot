@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copilot- Documentation</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>WaysAhead's CoPilot</title>
     <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./components/navbar.js"></script>
@@ -19,457 +20,273 @@
     <main class="grid grid-cols-[0.25fr_0.5fr_0.25fr] grid-rows-[auto_1fr] max-w-screen-2xl mx-auto h-screen">
         <nav-bar></nav-bar>
         <side-bar></side-bar>
-        <div class="main-content px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
-            <h1 class="text-4xl font-semibold">Project Documentation</h1>
-            <div class="mt-4 ml-4">
-                <div class="mt-4 ml-4">
-                    <h1 class="text-3xl">WEBSOURCECODE/FRONTEND/SRC/APP/(USER) /CONTACT/PAGE.TSX</h1><br>
-                    <h2 class="mb-2 text-2xl font-semibold">Component Structure</h2>
-                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
-                        Import Statements: <br>
-                        The component imports necessary modules and components from various libraries and internal
-                        directories. <br><br>
-                        import Certificate from "@/components/custom/Certificate"; <br>
-                        import SectionWrapper from "@/components/custom/SectionWrapper"; <br>
-                        import { Button } from "@/components/ui/button"; <br>
-                        import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"; <br>
-                        import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } <br>
-                        from "@/components/ui/carousel"; <br>
-                        import { cn } from "@/lib/utils"; <br>
-                        import Autoplay from "embla-carousel-autoplay"; <br>
-                        import Image from "next/image"; <br>
-                        import Link from "next/link"; <br>
-                        import React from "react"; <br>
-                        import { BsLinkedin } from "react-icons/bs"; <br>
-                    </ul><br>
-                    <h2 class="mb-2 text-2xl font-semibold">Data Arrays</h2>
-                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
-                        The component includes two arrays to store information about reasons to choose Renoswift
-                        and team members.
-                        <li>
-                            Reasons Array: Contains objects with title and description for each reason.
-                        </li>
-                        <li>
-                            Team Members Array: Contains objects with image, name, role, description, and
-                            LinkedIn profile link for each team member.
-                        </li><br>
-                        const reasons = [ <br>
-                        { "title": }, <br>
-                        { "title":}, <br>
-                        { "title": }, <br>
-                        { "title": } <br>
-                        ]; <br>
-                        const teamMembers = [ <br>
-                        { image: <br>
-                        } <br>
-                        ]; <br>
-                    </ul>
-                    <h2 class="mb-2 text-2xl font-semibold">ChooseUsCard Component</h2>
-                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
-                        <li>
-                            Purpose: To render individual cards for reasons to choose Renoswift.
-                        </li>
-                        <li>
-                            Props: Accepts title, description, and index.
-                        </li>
-                        <li>
-                            Structure: Utilizes Card, CardHeader, CardTitle, and CardContent components from the
-                            UI library.
-                        </li><br>
-                        function ChooseUsCard({ title, description, index }: Readonly&lt;{ title: string, description:
-                        <br>
-                        string, index: number }&gt;) { <br>
-                        return ( <br>
-                        ) <br>
-                        } <br>
-                    </ul>
-                    <h2 class="mb-2 text-2xl font-semibold">About Component</h2>
-                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
-                        <li>
-                            Purpose: Main component that renders the entire "About" section.
-                        </li>
-                        <li>
-                            Structure: The component is wrapped in a SectionWrapper and contains multiple
-                            sections, each providing different information about Renoswift
-                        </li><br>
-                    </ul>
-                    <h2 class="mb-2 text-2xl font-semibold">Sections</h2>
-                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
-                        1. Introduction Section:
-                        <li>
-                            Content: A heading and a brief introduction about Renoswift
-                        </li>
-                        <li>
-                            Carousel: Displays a carousel of images with autoplay functionality.
-                        </li><br>
-                        &lt;section className="bg-secondary rounded-lg p-8 sm:p-12 mt-[4em] flex flex col-reverse
-                        md:flex-row gap-12 items-center justify-between"&gt; <br>
-                        &lt;div className="max-w-2xl"&gt; <br>
-                        &lt;h2&gt;className="heading-1 text-2xl"&gt;WE ARE Renoswift®&lt;/h2&gt; <br>
-                        &lt;p&gt; className="mt-[1em] max-w-lg"&gt;At Renoswift®, we are not just
-                        renovators; we are your partners in transforming your bathroom dreams into
-                        reality...&lt;/p&gt; <br>
-                        &lt;/div&gt; <br>
-                        &lt;Carousel plugins= &gt; <br>
-                        &lt;CarouselContent&gt; <br>
+        <div class="main-content w-full px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
+            <h1 class="text-4xl text-center font-semibold font-serif">Project Documentation</h1>
+            <div class=" w-full mt-4 ml-4">
+                <div class=" w-full mt-4 ml-4">
+                    <h1 class="text-3xl font-serif font-style: italic">About Page</h1>
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">Frontend code of about page.tsx</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-justify">
+                        <code>
+                            "use client"; <br>
+
+import Certificate from "@/components/custom/Certificate"; <br>
+import SectionWrapper from "@/components/custom/SectionWrapper"; <br>
+import { Button } from "@/components/ui/button"; <br>
+import { Card, CardContent, CardHeader, <br> CardTitle } from "@/components/ui/card"; <br>
+import { Carousel, CarouselContent, <br> CarouselItem, CarouselNext, CarouselPrevious } <br> from "@/components/ui/carousel"; <br>
+import { cn } from "@/lib/utils"; <br>
+import Autoplay from "embla-carousel-autoplay"; <br>
+import Image from "next/image"; <br>
+import Link from "next/link"; <br>
+import React from "react"; <br>
+import { BsLinkedin } from "react-icons/bs"; <br>
+
+const reasons = [ <br>
+    { <br>
+        "title": "Swiftness", <br>
+        "description": "Renovations don't have to be a hassle. <br> We take pride in providing the swiftest renovation services possible, <br> ensuring minimal disruption to your daily life." <br>
+    }, <br>
+    { <br>
+        "title": "Skilled Team", <br>
+        "description": "Our team is not just skilled; <br> they're constantly upgraded on the latest tools and techniques. <br> This commitment ensures they deliver nothing less than top-notch quality in every project." <br>
+    }, <br>
+    { <br>
+        "title": "Quality", <br>
+        "description": "Your home deserves the best. <br> That's why we use only the highest quality products for your renovation needs, <br> ensuring durability and a touch of luxury."
+    }, <br>
+    { <br>
+        "title": "Expertise", <br>
+        "description": "With over a decade and a half of experience in the renovation space, <br> our expertise is unmatched. It reflects in the craftsmanship <br> and precision we bring to every project."
+    } <br>
+]; <br>
+
+const teamMembers = [ <br>
+    { <br>
+        image: '/assets/team-1.png', <br>
+        name: 'Bhavesh Dev Sanger', <br>
+        role: 'Co-Founder & CEO', <br>
+        description: 'He has 15+ years of Sales & Team handling experience with <br> world-renowned brands in piping, sanitary and drainage products both <br> in Indian and International Markets.', <br>
+        linkedIn: "https://www.linkedin.com/in/bhavesh-sanger-5045051a/" <br>
+    }, <br>
+    { <br>
+        image: '/assets/team-2.png', <br>
+        name: 'Ambikkaa Panwar', <br>
+        role: 'Co-Founder', <br>
+        description: '14+ years of experience and has been instrumental in adding value to the company in the <br> sectors of Marketing, Finance & Managing Imports.', <br>
+        linkedIn: "https://www.linkedin.com/in/ambikkaa-panwar-b1125430/" <br>
+    }, <br>
+    { <br>
+        image: '/assets/team-3.png', <br>
+        name: 'Neetu Jha', <br>
+        role: 'CHRO', <br>
+        description: 'She plays a pivotal role in shaping the company\'s workforce strategy <br> and fostering a positive and inclusive work culture.', <br>
+        linkedIn: "#" <br>
+    }, <br>
+    { <br>
+        image: '/assets/team-4.png', <br>
+        name: 'Rupam Bhattacharjee', <br>
+        role: 'CTO', <br>
+        description: '20+ years of experience and ensuring cutting-edge solutions and transformative <br> strategies for a tech-driven future.', <br>
+        linkedIn: "https://www.linkedin.com/in/waysahead/" <br>
+    } <br>
+]; <br>
+
+function ChooseUsCard({ title, description, index }: Readonly&lt;{ <br> title: string, description: string, index: number }&gt;) { <br>
+    return ( <br>
+        &lt;Card className={cn('bg-primary/20 hover:bg-primary/50 <br> transition-all duration-300 hover:scale-95')}&gt; <br>
+            &lt;CardHeader&gt; <br>
+                &lt;CardTitle&gt;{title}&lt;/CardTitle&gt; <br>
+            &lt;/CardHeader&gt; <br>
+            &lt;CardContent&gt; <br>
+                &lt;p&gt;{description}&lt;/p&gt; <br>
+            &lt;/CardContent&gt; <br>
+        &lt;/Card&gt; <br>
+
+    ) <br>
+} <br>
+
+export default function About() { <br>
+    return ( <br>
+        &lt;SectionWrapper&gt; <br>
+            &lt;h1 className="heading-1 text-center my-[2em]"&gt;RenoSwift: Crafting Your Dream Bathroom Experience&lt;/h1&gt; <br>
+
+            &lt;section className="bg-secondary rounded-lg p-8 sm:p-12 mt-[4em] <br> flex flex-col-reverse md:flex-row gap-12 items-center justify-between"&gt; <br>
+                &lt;div className="max-w-md"&gt; <br>
+                    &lt;h2 className="heading-1 text-2xl"&gt;WE ARE Renoswift®&lt;/h2&gt; <br>
+                    &lt;p className="mt-[1em] max-w-lg"&gt; <br>
+                        At Renoswift®, we are not just renovators; <br> we are your partners in transforming your bathroom dreams into reality. <br> Our commitment to innovation and quality sets us apart as we bring expertise <br> and creativity to every project, ensuring your bathroom is a stunning masterpiece. <br>
+                    &lt;/p&gt; <br>
+                &lt;/div&gt; <br>
+                &lt;Carousel <br>
+                    plugins={[ <br>
+                        Autoplay({ <br>
+                            delay: 5000, <br>
+                        }), <br>
+                    ]} <br>
+                    className={cn('overflow-hidden relative isolate mt-8 max-w-md w-fit')} <br>
+                &gt; <br>
+                    &lt;CarouselContent&gt; <br>
                         &lt;CarouselItem&gt; <br>
+                            &lt;Image <br>
+                                src='/assets/about-slide-1.jpg' <br>
+                                alt='slide' <br>
+                                width={350} <br>
+                                height={350} <br>
+                                className="rounded-lg object-cover object-center w-full" <br>
+                            /&gt; <br>
                         &lt;/CarouselItem&gt; <br>
                         &lt;CarouselItem&gt; <br>
-                        &lt;Image src= &gt; <br>
-                        &lt;/Carousel&gt; <br>
-                        &lt;/section&gt; <br><br>
+                            &lt;Image <br>
+                                src='/assets/about-slide-2.jpg' <br>
+                                alt='slide' <br>
+                                width={350} <br>
+                                height={350} <br>
+                                className="rounded-lg object-cover object-center w-full" <br>
+                            /&gt; <br>
+                        &lt;/CarouselItem&gt; <br>
+                        &lt;CarouselItem&gt; <br>
+                            &lt;Image <br>
+                                src='/assets/about-slide-3.jpg' <br>
+                                alt='slide' <br>
+                                width={350} <br>
+                                height={350} <br>
+                                className="rounded-lg object-cover object-center w-full" <br>
+                            /&gt; <br>
+                        &lt;/CarouselItem&gt; <br>
+                    &lt;/CarouselContent&gt; <br>
+                    &lt;CarouselPrevious className='absolute left-8 hidden sm:inline-flex' /&gt; <br>
+                    &lt;CarouselNext className='absolute right-8 hidden sm:inline-flex' /&gt; <br>
+                &lt;/Carousel&gt; <br>
+            &lt;/section&gt; <br>
 
-                        2. Service Section:
-                        <li>Content: Describes the renovation services provided by Renoswift.</li>
-                        <li>Image: Displays an image related to renovation.</li>
-                        <code>
-                            &lt;section className="bg-primary/20 rounded-lg p-8 sm:p-12 mt-[4em] flex flex-col&gt;
-                            &lt;/section&gt;
-                        </code><br><br>
-                        3. Team Section:
-                        <li>Content: Introduces the team members of Renoswift.</li>
-                        <li>Grid Layout: Displays team members in a responsive grid.</li> <br><br>
-                        4. Reasons Section:
-                        <li>Content: Lists the reasons why customers should choose Renoswift.</li>
-                        <li>Cards: Uses ChooseUsCard to display each reason.</li>
+            &lt;section className="bg-primary/20 rounded-lg p-8 sm:p-12 mt-[4em] flex flex-col-reverse md:flex-row gap-12 items-center justify-between"&gt; <br>
+                &lt;div&gt; <br>
+                    &lt;h2 className="heading-1 text-2xl"&gt;Renovation at Your Doorstep&lt;/h2&gt; <br>
+                    &lt;p className="mt-[1em] max-w-md"&gt; <br>
+                        Renoswift®️ brings top-notch renovation services to your doorstep. <br> Our expert team is dedicated to delivering quality work with on-time precision. <br> We&apos;re not just about renovating spaces; <br> we&apos;re your one-stop solution for all your home renovation needs. <br>
+                    &lt;/p&gt; <br>
+                &lt;/div&gt; <br>
+                &lt;Image <br>
+                    src='/assets/renovation-1.jpg' <br>
+                    alt='renovation' <br>
+                    width={450} <br>
+                    height={350} <br>
+                    className="rounded-lg object-cover object-center" <br>
+                /&gt; <br>
+            &lt;/section&gt; <br>
+
+            &lt;section className="bg-secondary rounded-lg p-8 sm:p-12 mt-[4em] flex flex-col gap-12 items-start justify-between"&gt; <br>
+                &lt;div&gt; <br>
+                    &lt;h2 className="heading-1 text-2xl"&gt;Meet Our Team&lt;/h2&gt; <br>
+                    &lt;p className="mt-[1em]"&gt; <br>
+                        Our team is the heart of Renoswift®. Comprising young, enthusiastic professionals with a pulse on the market and seasoned management <br> with over a decade of experience, we offer a perfect blend of freshness and expertise. <br> Together, we provide you with a service that&apos;s the best of both worlds. <br>
+                    &lt;/p&gt; <br>
+                &lt;/div&gt; <br>
+                &lt;div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 self-center"&gt; <br>
+                    { <br>
+                        teamMembers.map((member, index) =&gt; ( <br>
+                            &lt;div key={index} className="max-w-[300px] bg-primary/50 p-5 rounded-lg flex flex-col gap-2 text-center items-center"&gt; <br>
+                                &lt;div className="bg-white rounded-full"&gt; <br>
+                                    &lt;Image <br>
+                                        src={member.image} <br>
+                                        alt={member.name} <br>
+                                        width={200} <br>
+                                        height={200} <br>
+                                        className="object-cover object-center rounded-lg w-32 h-32" <br>
+                                    /&gt; <br>
+                                &lt;/div&gt; <br>
+                                &lt;h3 className="mt-2 font-semibold text-lg"&gt;{member.name}&lt;/h3&gt; <br>
+                                &lt;h4 className="font-medium -mt-1"&gt;{member.role}&lt;/h4&gt; <br>
+                                &lt;p&gt;{member.description}&lt;/p&gt; <br>
+                                &lt;div className="flex-grow"&gt;&lt;/div&gt; <br>
+                                &lt;Link href={member.linkedIn} target="_blank" className="flex items-center justify-center gap-4 mt-4"&gt; <br>
+                                    &lt;button className={cn('bg-blue-500 hover:bg-blue-600 transition-colors duration-200 flex items-center justify-center gap-2 py-3 px-4 rounded-sm')}&gt; <br>
+                                        &lt;div className="bg-white rounded-sm"&gt; <br>
+                                            &lt;BsLinkedin size={24} className="text-[#0077b5]" /&gt; <br>
+                                        &lt;/div&gt; <br>
+                                        &lt;p className="text-white font-medium"&gt;Connect&lt;/p&gt; <br>
+                                    &lt;/button&gt; <br>
+                                &lt;/Link&gt; <br>
+                            &lt;/div&gt; <br>
+                        )) <br>
+                    } <br>
+                &lt;/div&gt; <br>
+            &lt;/section&gt; <br>
+
+            &lt;section className="bg-primary/20 rounded-lg p-8 sm:p-12 mt-[4em]"&gt; <br>
+                &lt;h2 className="heading-1 text-2xl"&gt;Why Choose Us?&lt;/h2&gt; <br>
+                &lt;div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] mt-8"&gt; <br>
+                    { <br>
+                        reasons.map((reason, index) =&gt; ( <br>
+                            &lt;ChooseUsCard <br>
+                                key={index} <br>
+                                title={reason.title} <br>
+                                description={reason.description} <br>
+                                index={index + 1} <br>
+                            /&gt; <br>
+                        )) <br>
+                    } <br>
+                &lt;/div&gt; <br>
+            &lt;/section&gt; <br>
+
+            &lt;Certificate /&gt; <br>
+
+            &lt;section className="text-center space-y-4 text-xl font-medium mt-20 bg-secondary rounded-lg p-8 sm:p-12"&gt; <br>
+                &lt;p&gt;We Create A Home Space Of Your Dreams&lt;/p&gt; <br>
+                &lt;p&gt;We use products of renowned national and international brands for our projects.&lt;/p&gt; <br>
+                &lt;Button size={"lg"} asChild&gt; <br>
+                    &lt;Link href="/auth/login"&gt; <br>
+                        REQUEST A QUOTE <br>
+                    &lt;/Link&gt; <br>
+                &lt;/Button&gt; <br>
+            &lt;/section&gt; <br>
+        &lt;/SectionWrapper&gt; <br>
+    ) <br>
+} <br>
+
+                        </code>
                     </ul>
-                    <h2 class="mb-2 text-2xl font-semibold">page.tsx</h2>
-                    import SectionWrapper from '@/components/custom/SectionWrapper'
-                    import { Button } from '@/components/ui/button'
-                    import { Input } from '@/components/ui/input'
-                    import { FaPhoneVolume } from "react-icons/fa6"
-                    import { HiOutlineMailOpen } from "react-icons/hi"
-
-                    export default function Contact() {
-                    return (
-                    &lt;SectionWrapper className="relative flex flex-col-reverse sm:flex-row gap-4 items-center mt-10
-                    w-full h-[80svh]"&gt;
-                    {/* &lt;div className="absolute inset-0 rounded-lg overflow-hidden"&gt;
-                    &lt;iframe
-                    title='map'
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d223960.2906516919!2d77.3597857!3d28.7082013!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceff8a4bf2d6f%3A0xcac8cca1b277fdcc!2sRenoswift!5e0!3m2!1sen!2sin!4v1706711828654!5m2!1sen!2sin"
-                    width="100%"
-                    height="100%"
-                    allowFullScreen={false}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    &gt;&lt;/iframe&gt;
-                    &lt;/div&gt; */}
-                    {/* &lt;div className="container px-5 py-24 mx-auto flex"&gt;
-                    &lt;div className="lg:w-1/3 md:w-1/2 bg-secondary rounded-lg p-8 flex flex-col md:ml-auto w-full
-                    mt-10 md:mt-0 relative z-10 shadow-md"&gt;
-                    &lt;h2 className="text-secondary-foreground text-lg mb-8 font-medium"&gt;Contact Us&lt;/h2&gt;
-                    &lt;div&gt;
-                    &lt;label htmlFor="email" className="leading-7 text-sm
-                    text-secondary-foreground/80"&gt;Email&lt;/label&gt;
-                    &lt;Input type="email" id="email" name="email" placeholder='Enter your email' /&gt;
-                    &lt;/div&gt;
-                    &lt;div&gt;
-                    &lt;label htmlFor="message" className="leading-7 text-sm
-                    text-secondary-foreground/80"&gt;Message&lt;/label&gt;
-                    &lt;Textarea id="message" name="message" placeholder='Enter your message'&gt;&lt;/Textarea&gt;
-                    &lt;/div&gt;
-                    &lt;Button&gt;Send&lt;/Button&gt;
-                    &lt;/div&gt;
-                    &lt;/div&gt; */}
-                    &lt;div className='flex flex-col gap-4 w-full'&gt;
-                    &lt;h2 className="heading-1"&gt;Get in &lt;span
-                    className='text-primary'&gt;Touch&lt;/span&gt;&lt;/h2&gt;
-                    &lt;Input type="text" id="name" name="name" placeholder='Name*' /&gt;
-                    &lt;Input type="email" id="email" name="email" placeholder='Email*' /&gt;
-                    &lt;Input type="text" id="phone" name="phone" placeholder='Phone Number*' /&gt;
-                    &lt;Input type="text" id="info" name="info" placeholder='How did you find us ?*' /&gt;
-                    &lt;Button&gt;Send&lt;/Button&gt;
-                    &lt;div className='flex flex-wrap gap-4'&gt;
-                    &lt;div className='flex gap-4 items-center'&gt;
-                    &lt;FaPhoneVolume className='text-2xl' /&gt;
-                    &lt;div&gt;
-                    &lt;h4 className='font-semibold uppercase'&gt;Phone&lt;/h4&gt;
-                    &lt;p className='text-primary'&gt;+91 9205022725&lt;/p&gt;
-                    &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div className='flex gap-4 items-center'&gt;
-                    &lt;FaPhoneVolume className='text-2xl' /&gt;
-                    &lt;div&gt;
-                    &lt;h4 className='font-semibold uppercase'&gt;Phone&lt;/h4&gt;
-                    &lt;p className='text-primary'&gt;+91 1204902825&lt;/p&gt;
-                    &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div className='flex gap-4 items-center'&gt;
-                    &lt;FaPhoneVolume className='text-2xl' /&gt;
-                    &lt;div&gt;
-                    &lt;h4 className='font-semibold uppercase'&gt;Phone&lt;/h4&gt;
-                    &lt;p className='text-primary'&gt;+91 9818204406&lt;/p&gt;
-                    &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div className='flex gap-4 items-center'&gt;
-                    &lt;HiOutlineMailOpen className='text-2xl' /&gt;
-                    &lt;div&gt;
-                    &lt;h4 className='font-semibold uppercase'&gt;Email&lt;/h4&gt;
-                    &lt;p className='text-primary'&gt;info@renoswift.com&lt;/p&gt;
-                    &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div className='w-full h-full flex items-center justify-center relative rounded-xl
-                    overflow-hidden'&gt;
-                    &lt;iframe
-                    title='map'
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d223960.2906516919!2d77.3597857!3d28.7082013!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceff8a4bf2d6f%3A0xcac8cca1b277fdcc!2sRenoswift!5e0!3m2!1sen!2sin!4v1706711828654!5m2!1sen!2sin"
-                    width="100%"
-                    height="100%"
-                    className='absolute inset-0 sm:inset-auto sm:w-[30rem] sm:h-[30rem] z-10'
-                    allowFullScreen={false}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    &gt;&lt;/iframe&gt;
-                    &lt;div className='w-1/2 h-full bg-primary ml-auto'&gt;&lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;/SectionWrapper&gt;
-                    )
-                    } "use client";
-
-                    import Certificate from "@/components/custom/Certificate";
-                    import SectionWrapper from "@/components/custom/SectionWrapper";
-                    import { Button } from "@/components/ui/button";
-                    import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-                    import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from
-                    "@/components/ui/carousel";
-                    import { cn } from "@/lib/utils";
-                    import Autoplay from "embla-carousel-autoplay";
-                    import Image from "next/image";
-                    import Link from "next/link";
-                    import React from "react";
-                    import { BsLinkedin } from "react-icons/bs";
-
-                    const reasons = [
-                    {
-                    "title": "Swiftness",
-                    "description": "Renovations don't have to be a hassle. We take pride in providing the swiftest
-                    renovation services possible, ensuring minimal disruption to your daily life."
-                    },
-                    {
-                    "title": "Skilled Team",
-                    "description": "Our team is not just skilled; they're constantly upgraded on the latest tools and
-                    techniques. This commitment ensures they deliver nothing less than top-notch quality in every
-                    project."
-                    },
-                    {
-                    "title": "Quality",
-                    "description": "Your home deserves the best. That's why we use only the highest quality products for
-                    your renovation needs, ensuring durability and a touch of luxury."
-                    },
-                    {
-                    "title": "Expertise",
-                    "description": "With over a decade and a half of experience in the renovation space, our expertise
-                    is unmatched. It reflects in the craftsmanship and precision we bring to every project."
-                    }
-                    ];
-
-                    const teamMembers = [
-                    {
-                    image: '/assets/team-1.png',
-                    name: 'Bhavesh Dev Sanger',
-                    role: 'Co-Founder & CEO',
-                    description: 'He has 15+ years of Sales & Team handling experience with world-renowned brands in
-                    piping, sanitary and drainage products both in Indian and International Markets.',
-                    linkedIn: "https://www.linkedin.com/in/bhavesh-sanger-5045051a/"
-                    },
-                    {
-                    image: '/assets/team-2.png',
-                    name: 'Ambikkaa Panwar',
-                    role: 'Co-Founder',
-                    description: '14+ years of experience and has been instrumental in adding value to the company in
-                    the sectors of Marketing, Finance & Managing Imports.',
-                    linkedIn: "https://www.linkedin.com/in/ambikkaa-panwar-b1125430/"
-                    },
-                    {
-                    image: '/assets/team-3.png',
-                    name: 'Neetu Jha',
-                    role: 'CHRO',
-                    description: 'She plays a pivotal role in shaping the company\'s workforce strategy and fostering a
-                    positive and inclusive work culture.',
-                    linkedIn: "#"
-                    },
-                    {
-                    image: '/assets/team-4.png',
-                    name: 'Rupam Bhattacharjee',
-                    role: 'CTO',
-                    description: '20+ years of experience and ensuring cutting-edge solutions and transformative
-                    strategies for a tech-driven future.',
-                    linkedIn: "https://www.linkedin.com/in/waysahead/"
-                    }
-                    ];
-
-                    function ChooseUsCard({ title, description, index }: Readonly&lt;{ title: string, description:
-                    string, index: number }&gt;) {
-                    return (
-                    &lt;Card className={cn('bg-primary/20 hover:bg-primary/50 transition-all duration-300
-                    hover:scale-95')}&gt;
-                    &lt;CardHeader&gt;
-                    &lt;CardTitle&gt;{title}&lt;/CardTitle&gt;
-                    &lt;/CardHeader&gt;
-                    &lt;CardContent&gt;
-                    &lt;p&gt;{description}&lt;/p&gt;
-                    &lt;/CardContent&gt;
-                    &lt;/Card&gt;
-
-                    )
-                    }
-
-                    export default function About() {
-                    return (
-                    &lt;SectionWrapper&gt;
-                    &lt;h1 className="heading-1 text-center my-[2em]"&gt;RenoSwift: Crafting Your Dream Bathroom
-                    Experience&lt;/h1&gt;
-
-                    &lt;section className="bg-secondary rounded-lg p-8 sm:p-12 mt-[4em] flex flex-col-reverse
-                    md:flex-row gap-12 items-center justify-between"&gt;
-                    &lt;div className="max-w-2xl"&gt;
-                    &lt;h2 className="heading-1 text-2xl"&gt;WE ARE Renoswift®&lt;/h2&gt;
-                    &lt;p className="mt-[1em] max-w-lg"&gt;
-                    At Renoswift®, we are not just renovators; we are your partners in transforming your bathroom dreams
-                    into reality. Our commitment to innovation and quality sets us apart as we bring expertise and
-                    creativity to every project, ensuring your bathroom is a stunning masterpiece.
-                    &lt;/p&gt;
-                    &lt;/div&gt;
-                    &lt;Carousel
-                    plugins={[
-                    Autoplay({
-                    delay: 5000,
-                    }),
-                    ]}
-                    className={cn('overflow-hidden relative isolate mt-8 max-w-2xl w-fit')}
-                    &gt;
-                    &lt;CarouselContent&gt;
-                    &lt;CarouselItem&gt;
-                    &lt;Image
-                    src='/assets/about-slide-1.jpg'
-                    alt='slide'
-                    width={350}
-                    height={350}
-                    className="rounded-lg object-cover object-center w-full"
-                    /&gt;
-                    &lt;/CarouselItem&gt;
-                    &lt;CarouselItem&gt;
-                    &lt;Image
-                    src='/assets/about-slide-2.jpg'
-                    alt='slide'
-                    width={350}
-                    height={350}
-                    className="rounded-lg object-cover object-center w-full"
-                    /&gt;
-                    &lt;/CarouselItem&gt;
-                    &lt;CarouselItem&gt;
-                    &lt;Image
-                    src='/assets/about-slide-3.jpg'
-                    alt='slide'
-                    width={350}
-                    height={350}
-                    className="rounded-lg object-cover object-center w-full"
-                    /&gt;
-                    &lt;/CarouselItem&gt;
-                    &lt;/CarouselContent&gt;
-                    &lt;CarouselPrevious className='absolute left-8 hidden sm:inline-flex' /&gt;
-                    &lt;CarouselNext className='absolute right-8 hidden sm:inline-flex' /&gt;
-                    &lt;/Carousel&gt;
-                    &lt;/section&gt;
-
-                    &lt;section className="bg-primary/20 rounded-lg p-8 sm:p-12 mt-[4em] flex flex-col-reverse
-                    md:flex-row gap-12 items-center justify-between"&gt;
-                    &lt;div&gt;
-                    &lt;h2 className="heading-1 text-2xl"&gt;Renovation at Your Doorstep&lt;/h2&gt;
-                    &lt;p className="mt-[1em] max-w-2xl"&gt;
-                    Renoswift® brings top-notch renovation services to your doorstep. Our expert team is dedicated to
-                    delivering quality work with on-time precision. We&apos;re not just about renovating spaces;
-                    we&apos;re your one-stop solution for all your home renovation needs.
-                    &lt;/p&gt;
-                    &lt;/div&gt;
-                    &lt;Image
-                    src='/assets/renovation-1.jpg'
-                    alt='renovation'
-                    width={450}
-                    height={350}
-                    className="rounded-lg object-cover object-center"
-                    /&gt;
-                    &lt;/section&gt;
-
-                    &lt;section className="bg-secondary rounded-lg p-8 sm:p-12 mt-[4em] flex flex-col gap-12 items-start
-                    justify-between"&gt;
-                    &lt;div&gt;
-                    &lt;h2 className="heading-1 text-2xl"&gt;Meet Our Team&lt;/h2&gt;
-                    &lt;p className="mt-[1em]"&gt;
-                    Our team is the heart of Renoswift®. Comprising young, enthusiastic professionals with a pulse on
-                    the market and seasoned management with over a decade of experience, we offer a perfect blend of
-                    freshness and expertise. Together, we provide you with a service that&apos;s the best of both
-                    worlds.
-                    &lt;/p&gt;
-                    &lt;/div&gt;
-                    &lt;div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 self-center"&gt;
-                    {
-                    teamMembers.map((member, index) =&gt; (
-                    &lt;div key={index} className="max-w-[300px] bg-primary/50 p-5 rounded-lg flex flex-col gap-2
-                    text-center items-center"&gt;
-                    &lt;div className="bg-white rounded-full"&gt;
-                    &lt;Image
-                    src={member.image}
-                    alt={member.name}
-                    width={200}
-                    height={200}
-                    className="object-cover object-center rounded-lg w-32 h-32"
-                    /&gt;
-                    &lt;/div&gt;
-                    &lt;h3 className="mt-2 font-semibold text-lg"&gt;{member.name}&lt;/h3&gt;
-                    &lt;h4 className="font-medium -mt-1"&gt;{member.role}&lt;/h4&gt;
-                    &lt;p&gt;{member.description}&lt;/p&gt;
-                    &lt;div className="flex-grow"&gt;&lt;/div&gt;
-                    &lt;Link href={member.linkedIn} target="_blank" className="flex items-center justify-center gap-4
-                    mt-4"&gt;
-                    &lt;button className={cn('bg-blue-500 hover:bg-blue-600 transition-colors duration-200 flex
-                    items-center justify-center gap-2 py-3 px-4 rounded-sm')}&gt;
-                    &lt;div className="bg-white rounded-sm"&gt;
-                    &lt;BsLinkedin size={24} className="text-[#0077b5]" /&gt;
-                    &lt;/div&gt;
-                    &lt;p className="text-white font-medium"&gt;Connect&lt;/p&gt;
-                    &lt;/button&gt;
-                    &lt;/Link&gt;
-                    &lt;/div&gt;
-                    ))
-                    }
-                    &lt;/div&gt;
-                    &lt;/section&gt;
-
-                    &lt;section className="bg-primary/20 rounded-lg p-8 sm:p-12 mt-[4em]"&gt;
-                    &lt;h2 className="heading-1 text-2xl"&gt;Why Choose Us?&lt;/h2&gt;
-                    &lt;div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] mt-8"&gt;
-                    {
-                    reasons.map((reason, index) =&gt; (
-                    &lt;ChooseUsCard
-                    key={index}
-                    title={reason.title}
-                    description={reason.description}
-                    index={index + 1}
-                    /&gt;
-                    ))
-                    }
-                    &lt;/div&gt;
-                    &lt;/section&gt;
-
-                    &lt;Certificate /&gt;
-
-                    &lt;section className="text-center space-y-4 text-xl font-medium mt-20 bg-secondary rounded-lg p-8
-                    sm:p-12"&gt;
-                    &lt;p&gt;We Create A Home Space Of Your Dreams&lt;/p&gt;
-                    &lt;p&gt;We use products of renowned national and international brands for our projects.&lt;/p&gt;
-                    &lt;Button size={"lg"} asChild&gt;
-                    &lt;Link href="/auth/login"&gt;
-                    REQUEST A QUOTE
-                    &lt;/Link&gt;
-                    &lt;/Button&gt;
-                    &lt;/section&gt;
-                    &lt;/SectionWrapper&gt;
-                    )
-                    }
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">What About page do?</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-lg">
+                        The About component provides an in-depth presentation of the Renoswift® brand, its services,
+                        team, and reasons to choose it. The component uses various UI elements and sections to create an
+                        engaging and informative layout.
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Key Features:</h2>
+                        <li>
+                            Header Section: Displays the main heading: "RenoSwift: Crafting Your Dream Bathroom
+                            Experience".
+                        </li>
+                        <li>
+                            Introduction Section: Describes Renoswift® and its commitment to innovation and quality.
+                            Includes a carousel showcasing images related to the brand.
+                        </li>
+                        <li>
+                            Renovation Service Section: Highlights the renovation services offered by Renoswift®.
+                            Accompanied by an image illustrating the renovation process.
+                        </li>
+                        <li>
+                            Team Section: Introduces the key team members with their roles, descriptions, and LinkedIn
+                            profiles. Displays team member images and their detailed information.
+                        </li>
+                        <li>
+                            Responsive Design: Uses flexbox and responsive classes to ensure the layout adapts to
+                            different screen sizes, displaying in a column for small screens and a row for larger
+                            screens.
+                        </li>
+                        <li>
+                            Reasons to Choose Us Section: Lists the top reasons to choose Renoswift® for renovation
+                            services. Each reason is displayed in a card format with a title and description.
+                        </li>
+                        <li>
+                            Certificate Section: Includes a component to display certifications and recognitions
+                            (assumed to be imported).
+                        </li>
+                        <li>
+                            Call to Action Section: Encourages users to request a quote. Highlights the use of renowned
+                            brands for projects.
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

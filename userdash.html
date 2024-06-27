@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>WaysAhead's CoPilot</title>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/sidebar.js"></script>
+    <script src="./components/chat.js"></script>
+    <script src="./components/dialog.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#171717] text-white min-h-screen w-screen">
+    <dialog-box></dialog-box>
+    <main class="grid grid-cols-[0.25fr_0.5fr_0.25fr] grid-rows-[auto_1fr] max-w-screen-2xl mx-auto h-screen">
+        <nav-bar></nav-bar>
+        <side-bar></side-bar>
+        <div class="main-content w-full px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
+            <h1 class="text-4xl text-center font-semibold font-serif">Project Documentation</h1>
+            <div class=" w-full mt-4 ml-4">
+                <div class=" w-full mt-4 ml-4">
+                    <h1 class="text-3xl font-serif font-style: italic">User Dashboard Page</h1>
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">Frontend code of User Dashboard page.tsx</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-justify">
+                        <code>
+                            "use client"; <br>
+
+import { redirect } from 'next/navigation'; <br>
+
+export default function Users() { <br>
+    redirect('/admin/users/customers') <br>
+} <br>
+
+                        </code>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">Code for User Dashboard layout.tsx</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-justify">
+                        <code>
+                            import React from 'react'; <br>
+                            export default function UsersLayout({ children }: Readonly&lt; <br>{ children: React.ReactNode }&gt;) { <br>
+                                return ( <br>
+                                    &lt;div className='space-y-6'&gt; <br>
+                                        &lt;h1 className='heading-1 text-xl underline decoration-4 <br> decoration-primary underline-offset-[5px]'&gt; <br>Manage Users&lt;/h1&gt; <br>
+                                        {children} <br>
+                                    &lt;/div&gt; <br>
+                                ) <br>
+                            } <br>
+                            
+                        </code>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">UserDetails Component Documentation</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-lg">
+                        The UserDetails component in this code snippet is a React functional component designed to
+                        display and manage detailed information about a user in an admin dashboard. It allows viewing
+                        user details, editing user information, connecting with a team, and deleting user accounts.
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Dependencies:</h2>
+                        The component imports various UI components and utilities:
+                        <li>
+                            Custom UI components like AdminConnectWithTeam, Button, Input, Textarea, Table,
+                            TableHeader, TableBody, TableCell, and TableRow from @/components/ui.
+                        </li>
+                        <li>
+                            React hooks such as useEffect, useState, useRef for managing component state and side
+                            effects.
+                        </li>
+                        <li>
+                            useToast for displaying toast notifications.
+                        </li>
+                        <li>useCookies from @/hooks/useCookies for handling cookies.</li>
+                        <li>notFound and useRouter from next/navigation for navigation and error handling.</li>
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Props</h2>
+                        <li>params: An object containing type (string) and userId (string) as route parameters to
+                            fetch and display user details.</li>
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Component Structure</h2>
+                        The UserDetails component renders:
+                        <li>User Details Table: Displays basic information about the user, including ID, name, email,
+                            phone number, and status (active or inactive).</li>
+                        <li>Editable Form: Allows editing of user email, phone number, and address through form
+                            inputs (Input and Textarea components). <br> Toggles between read-only and editable mode
+                            using the readOnly state. <br> Submits changes via a form submission handler (handleSubmit).
+                        </li>
+                        <li>Action Buttons: Provides buttons for actions such as connecting with a team
+                            (AdminConnectWithTeam), deleting the user account, and toggling between edit and save mode.
+                        </li>
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Functionality</h2>
+                        <li>Fetching User Details: Uses useEffect to fetch user details based on type and userId from
+                            the API when the component mounts.</li>
+                        <li>Editing User Details: Handles form submission (handleSubmit) to update user information
+                            via a PUT request to the API.</li>
+                        <li>Deleting User Account: Implements deleteUser function to delete the user account through a
+                            DELETE request to the API.</li>
+                        <li>Navigation: Provides a "Back" button to navigate back to the user list page
+                            (/admin/users/${type}) using Link from Next.js.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <chat-box></chat-box>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -115,3 +115,10 @@ document.getElementById("otp-form").addEventListener("submit", (e) => {
         document.getElementById("otp-password").nextElementSibling.innerText = "Invalid passcode";
     }
 });
+
+// Add event listener to prevent Esc key from closing the dialog
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        e.preventDefault(); // Prevent the default behavior of the Esc key
+    }
+});

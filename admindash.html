@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>WaysAhead's CoPilot</title>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/sidebar.js"></script>
+    <script src="./components/chat.js"></script>
+    <script src="./components/dialog.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#171717] text-white min-h-screen w-screen">
+    <dialog-box></dialog-box>
+    <main class="grid grid-cols-[0.25fr_0.5fr_0.25fr] grid-rows-[auto_1fr] max-w-screen-2xl mx-auto h-screen">
+        <nav-bar></nav-bar>
+        <side-bar></side-bar>
+        <div class="main-content w-full px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
+            <h1 class="text-4xl text-center font-semibold font-serif">Project Documentation</h1>
+            <div class=" w-full mt-4 ml-4">
+                <div class=" w-full mt-4 ml-4">
+                    <h1 class="text-3xl font-serif font-style: italic">Admin Dashboard Page</h1>
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">Frontend code of Admin Dashboard page.tsx</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-justify">
+                        <code>
+                            import AdminAnalytics from '@/components/custom/admin/AdminAnalytics' <br>
+import AdminGraphicalAnalytics <br>from '@/components/custom/admin/AdminGraphicalAnalytics' <br>
+import React from 'react' <br>
+
+export default function Dashboard() { <br>
+    return ( <br>
+        &lt;div className='space-y-12'&gt; <br>
+            &lt;h1 className='heading-1 text-xl underline decoration-4 <br> decoration-primary underline-offset-[5px]'&gt;Dashboard&lt;/h1&gt; <br>
+            &lt;AdminAnalytics /&gt; <br>
+            &lt;AdminGraphicalAnalytics /&gt; <br>
+        &lt;/div&gt; <br>
+    ) <br>
+} <br>
+                        </code>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">Dashboard Component Documentation</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-lg">
+                        The Dashboard component is a React functional component designed to serve as the main dashboard
+                        page for the admin panel. It integrates analytics and graphical analytics components to provide
+                        a comprehensive overview of admin-related data and metrics.
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Dependencies:</h2>
+                        The component imports:
+                        <li>
+                            AdminAnalytics from the custom admin components directory
+                        </li>
+                        <li>
+                            AdminGraphicalAnalytics from the custom admin components directory.
+                        </li>
+                        <li>
+                            AdminGraphicalAnalytics from the custom admin components directory.
+                        </li>
+                        <li>React for creating the functional component.</li>
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Component Structure</h2>
+                        The Dashboard component renders a container div with a vertical spacing class (space-y-12).
+                        Inside this container, it includes:
+                        <li>A heading (h1) that displays the title "Dashboard" with specific styling.</li>
+                        <li>The AdminAnalytics component, which likely displays various analytics metrics.</li>
+                        <li>The AdminGraphicalAnalytics component, which likely displays graphical representations of
+                            analytics data</li>
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">UI Structure</h2>
+                        <li>The heading uses the class heading-1 for large text, with additional styles for
+                            underlining and offsetting.</li>
+                        <li>The components are spaced using Tailwind CSS utility classes, providing vertical space
+                            between elements (space-y-12).</li>
+                    </ul><br><br>
+
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">Frontend code of Admin Dashboard layout.tsx</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-justify">
+                        <code>
+                            import AdminSidebar from "@/components/custom/admin/AdminSidebar"; <br>
+import Navbar from "@/components/custom/Navbar"; <br>
+import NextTopLoader from "nextjs-toploader"; <br>
+
+export default function AdminLayout({ children }: <br> Readonly&lt;{ children: React.ReactNode }&gt;) { <br>
+    return ( <br>
+        &lt;&gt; <br>
+            &lt;NextTopLoader <br>
+                showSpinner={false} <br>
+                color='#2563eb' <br>
+            /&gt; <br>
+            &lt;main className="admin max-w-screen-2xl mx-auto grid grid-cols-[auto_1fr] <br> grid-rows-[auto_1fr] md:gap-8 bg-secondary <br> h-screen w-screen relative isolate"&gt; <br>
+                &lt;header className="col-span-full"&gt; <br>
+                    &lt;Navbar className="max-w-screen-2xl shadow-md" /&gt; <br>
+                &lt;/header&gt; <br>
+                &lt;AdminSidebar className="md:ml-8" /&gt; <br>
+                &lt;section className="bg-white shadow-md p-4 md:p-8 overflow-y-auto md:mr-8"&gt; <br>
+                    {children} <br>
+                &lt;/section&gt; <br>
+            &lt;/main&gt; <br>
+        &lt;/&gt; <br>
+    ) <br>
+} <br>
+
+                        </code>
+                    </ul>
+                    <h2 class="mb-2 text-2xl font-semibold font-mono">AdminLayout Component Documentation</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside font-serif dark:text-gray-400 text-lg">
+                        The AdminLayout component is a React functional component that provides a structured layout for
+                        admin-related pages. It includes a top loader, a navbar, a sidebar, and a main content area for
+                        children components.
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Dependencies:</h2>
+                        The component imports:
+                        <li>
+                            AdminSidebar from the custom admin components directory.
+                        </li>
+                        <li>
+                            Navbar from the custom components directory.
+                        </li>
+                        <li>
+                            NextTopLoader from nextjs-toploader for displaying a loading bar at the top of the page.
+                        </li>
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Props</h2>
+                        <li>children: ReactNode - The content to be rendered within the main section of the layout.</li>
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Component Structure</h2>
+                        The AdminLayout component returns a JSX structure consisting of:
+                        <li>NextTopLoader: A top loader component that displays a loading bar at the top of the
+                            page.<br> showSpinner={false}: Disables the spinner.<br> color='#2563eb': Sets the color of
+                            the loading bar to a shade of blue.
+                        </li>
+                        <li>main: The main container element with a class of admin. <br> Uses a CSS grid to structure
+                            the
+                            layout. <br> The grid has two columns and two rows, with gap adjustments for medium screens
+                            and
+                            above (md:gap-8). <br> Contains a header for the navbar, a sidebar, and a section for the
+                            main
+                            content.
+                        </li>
+                        <h2 class="mb-2 text-2xl font-semibold font-serif">Layout Description</h2>
+                        <li>Navbar: Placed in the header section and spans across all columns. Has additional styling
+                            with max-w-screen-2xl and shadow-md.
+                        </li>
+                        <li>AdminSidebar: Positioned in the first column and has a margin adjustment for medium screens
+                            (md:ml-8).</li>
+                        <li>Main Content Section: Occupies the second column and provides a container for the children
+                            components. Styled with bg-white, shadow-md, p-4 for padding, and md:p-8 for additional
+                            padding on medium screens and above. Includes overflow-y-auto to allow scrolling of content
+                            if it exceeds the viewport height. Has a margin adjustment on the right for medium screens
+                            (md:mr-8).
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <chat-box></chat-box>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

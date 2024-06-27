@@ -20,22 +20,24 @@
         <nav-bar></nav-bar>
         <side-bar></side-bar>
         <div class="main-content px-8 mt-6 max-h-screen overflow-x-auto" style="scrollbar-width: none;">
-            <h1 class="text-4xl font-semibold">Project Documentation</h1>
+            <h1 class="text-4xl text-center font-semibold">Project Documentation</h1>
             <div class="mt-4 ml-4">
                 <div class="mt-4 ml-4">
                     <h1 class="text-3xl">WEBSOURCECODE/FRONTEND/SRC/APP/Admin/ dashboard/PAGE.TSX</h1><br>
                     <h2 class="mb-2 text-2xl font-semibold">Component Structure</h2>
                     <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
                         The Dashboard component is structured as follows: <br>
-                        export default function Dashboard() { return ( <br>
-                        &lt;div className='space-y-12'&gt; <br>
-                        &lt;h1 className='heading-1 text-xl underline decoration-4 decoration-primary
-                        underline-offset-[5px]'&gt;Dashboard&lt;/h1&gt; <br>
-                        &lt;AdminAnalytics /&gt; <br>
-                        &lt;AdminGraphicalAnalytics /&gt; <br>
-                        &lt;/div&gt; <br>
-                        ); <br>
-                        } <br>
+                        <code>
+                            export default function Dashboard() { return ( <br>
+                                &lt;div className='space-y-12'&gt; <br>
+                                &lt;h1 className='heading-1 text-xl underline decoration-4 decoration-primary
+                                underline-offset-[5px]'&gt;Dashboard&lt;/h1&gt; <br>
+                                &lt;AdminAnalytics /&gt; <br>
+                                &lt;AdminGraphicalAnalytics /&gt; <br>
+                                &lt;/div&gt; <br>
+                                ); <br>
+                                } <br>
+                        </code>
 
                         <li>Wrapper Div: The main container for the dashboard, which uses a space-y-12 class to add
                             vertical spacing between elements.</li>
@@ -85,26 +87,52 @@
                     <h2 class="mb-2 text-2xl font-semibold">Component Structure </h2>
                     <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
                         The AdminLayout component is structured as follows: <br>
-                        export default function AdminLayout({ children }: Readonly&lt;{ children: React.ReactNode }&gt;)
-                        { return (
-                        &lt; &gt;
-                        &lt;NextTopLoader showSpinner={false}
-                        color='#2563eb'
-                        /&gt;
-                        &lt;main className="admin max-w-screen-2xl mx-auto grid grid-cols-[auto_1fr]
-                        grid-rows-[auto_1fr] md:gap-8 bg-secondary h-screen w-screen relative isolate"&gt;
-                        &lt;header className="col-span-full"&gt;
-                        &lt;Navbar className="max-w-screen-2xl shadow-md" /&gt;
-                        &lt;/header&gt;
-                        &lt;AdminSidebar className="md:ml-8" /&gt;
-                        &lt;section className="bg-white shadow-md p-4 md:p-8 overflow-y-auto md:mr-8"&gt;
-                        {children}
-                        &lt;/section&gt;
-                        &lt;/main&gt;
-                        &lt;/ &gt;
+                        <code>
+                    export default function AdminLayout({ children }: Readonly&lt;{ children: React.ReactNode }&gt;)
+                    { return (
+                    &lt; &gt;
+                    &lt;NextTopLoader showSpinner={false}
+                    color='#2563eb'
+                    /&gt;
+                    &lt;main className="admin max-w-screen-2xl mx-auto grid grid-cols-[auto_1fr]
+                    grid-rows-[auto_1fr] md:gap-8 bg-secondary h-screen w-screen relative isolate"&gt;
+                    &lt;header className="col-span-full"&gt;
+                    &lt;Navbar className="max-w-screen-2xl shadow-md" /&gt;
+                    &lt;/header&gt;
+                    &lt;AdminSidebar className="md:ml-8" /&gt;
+                    &lt;section className="bg-white shadow-md p-4 md:p-8 overflow-y-auto md:mr-8"&gt;
+                    {children}
+                    &lt;/section&gt;
+                    &lt;/main&gt;
+                    &lt;/ &gt;
+                    )
+                    }
+                   </code>
+                        <h2 class="mb-2 text-xl font-semibold">dashboard layout.tsx</h2>
+                        <code>import AdminSidebar from "@/components/custom/admin/AdminSidebar";
+                    import Navbar from "@/components/custom/Navbar";
+                    import NextTopLoader from "nextjs-toploader";
+                    
+                    export default function AdminLayout({ children }: Readonly&lt;{ children: React.ReactNode }&gt;) {
+                        return (
+                            &lt;&gt;
+                                &lt;NextTopLoader
+                                    showSpinner={false}
+                                    color='#2563eb'
+                                /&gt;
+                                &lt;main className="admin max-w-screen-2xl mx-auto grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] md:gap-8 bg-secondary h-screen w-screen relative isolate"&gt;
+                                    &lt;header className="col-span-full"&gt;
+                                        &lt;Navbar className="max-w-screen-2xl shadow-md" /&gt;
+                                    &lt;/header&gt;
+                                    &lt;AdminSidebar className="md:ml-8" /&gt;
+                                    &lt;section className="bg-white shadow-md p-4 md:p-8 overflow-y-auto md:mr-8"&gt;
+                                        {children}
+                                    &lt;/section&gt;
+                                &lt;/main&gt;
+                            &lt;/&gt;
                         )
-                        }
-
+                    }
+                    </code>
                         <li>
                             NextTopLoader: This component provides a visual loading indicator at the top of the page
                             whenever there are navigation changes or API calls.
@@ -157,6 +185,536 @@
                             typically the current admin page being viewed.
                         </li>
                         <br>
+                    </ul>
+                    <br>
+                    <br>
+                    <h1 class="text-3xl">web_sourcecode/frontend/src/app/admin/(dashboard) /suppliers
+                        /layout.tsx</h1><br>
+
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The SuppliersLayout component is a React functional component designed to serve as a layout
+                        wrapper for pages related to product suppliers. It provides a consistent heading and structured
+                        spacing for any children components passed to it.
+                        <h2 class="mb-2 text-xl font-semibold">Component Structure</h2>
+                        The SuppliersLayout component is defined as follows: <br>
+                        <code>
+                                import React from 'react'; <br>
+
+export default function SuppliersLayout({ children }: { children: React.ReactNode }) { <br>
+    return ( <br>
+        &lt;div className='space-y-6'&gt; <br>
+            &lt;h1 className='heading-1 text-xl underline decoration-4 decoration-primary underline-offset-[5px]'&gt;Product Suppliers&lt;/h1&gt; <br>
+            {children} <br>
+        &lt;/div&gt; <br>
+    ); <br>
+} <br>
+                            </code>
+                        <h2 class="mb-2 text-xl font-semibold">Props</h2>
+                        The SuppliersLayout component accepts a single prop:
+                        <li>
+                            children: A React.ReactNode that represents the child components or elements to be rendered
+                            within the layout.
+                        </li>
+                        <br>
+                        <h2 class="mb-2 text-xl font-semibold">Usage</h2>
+                        The SuppliersLayout component is intended to be used as a wrapper for any pages or components
+                        related to product suppliers. It provides a consistent layout with a heading and
+                        structured spacing.
+                        <br>
+                        <h2 class="mb-2 text-xl font-semibold">Example usage :</h2>
+                        Here is an example of how to use the SuppliersLayout component in a page:
+                        <code>
+                            import React from 'react'; <br>
+import SuppliersLayout from './SuppliersLayout'; <br>
+import Suppliers from './Suppliers'; <br>
+
+export default function SuppliersPage() { <br>
+    return ( <br>
+        &lt;SuppliersLayout&gt; <br>
+            &lt;Suppliers /&gt; <br>
+        &lt;/SuppliersLayout&gt; <br>
+    ); <br>
+} <br>
+                        </code>
+                        <h2 class="mb-2 text-l font-semibold">In this Example</h2>
+                        <li>
+                            The SuppliersLayout component is imported and used to wrap the Suppliers component
+                        </li>
+                        <li>
+                            The Suppliers component, which contains the main content, is passed as a child to the
+                            SuppliersLayout component.
+                        </li>
+                        <li>
+                            The SuppliersLayout provides the heading and structured layout for the Suppliers component
+                        </li>
+                    </ul>
+                    <h1 class="text-3xl">WEBSOURCECODE/FRONTEND/SRC/APP/Admin/ dashboard/suppliers/[supplierId]</h1><br>
+                    <h2 class="mb-2 text-xl font-semibold">Component Structure</h2>
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        The SupplierDetails component is structured as follows: <br>
+                        <code>
+                            "use client"; <br>
+                             <br>
+import React, { useEffect, useState } from 'react'; <br>
+import { Button } from '@/components/ui/button'; <br>
+import { Input } from '@/components/ui/input'; <br>
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'; <br>
+import { Textarea } from '@/components/ui/textarea'; <br>
+import { cn } from '@/lib/utils'; <br>
+import Link from 'next/link'; <br>
+import dayjs from 'dayjs'; <br>
+import { useCookies } from '@/hooks/useCookies'; <br>
+import AdminBrandSelect from '@/components/custom/admin/AdminBrandSelect'; <br>
+ <br>
+type SupplierType = { <br>
+    supplierId: string, <br>
+    name: string, <br>
+    email: string, <br>
+    phoneNumber: string, <br>
+    isActive: boolean, <br>
+    spoc: string, <br>
+    createdDate: string, <br>
+    yearsInOperation: string, <br>
+    brands: { brandId: number }[], <br>
+    address: string <br>
+}; <br>
+ <br>
+export default function SupplierDetails({ params: { supplierId } }: Readonly&lt;{ params: { supplierId: string } }&gt;) { <br>
+    const [readOnly, setReadOnly] = useState(true); <br>
+    const [supplier, setSupplier] = useState&lt;SupplierType&gt;(); <br>
+    const cookies = useCookies(); <br>
+
+    useEffect(() =&gt; { <br>
+        async function getSupplier() { <br>
+            const response = await fetch(${process.env.NEXT_PUBLIC_API_URL}/admin/suppliers/${supplierId}, { <br>
+                method: 'GET', <br>
+                headers: { <br>
+                    'Content-Type': 'application/json', <br>
+                    'Authorization': Bearer ${cookies?.get('adminToken')} <br>
+                } <br>
+            }); <br>
+            const data = await response.json(); <br>
+            setSupplier(data); <br>
+        } <br>
+        getSupplier(); <br>
+    }, [supplierId]); <br>
+ <br>
+    return ( <br>
+        &lt;div className='relative space-y-6'&gt; <br>
+            &lt;Link href={/admin/suppliers} className={cn('absolute -top-16 right-2 block')}&gt; <br>
+                &lt;Button size={'sm'} variant={'outline'} className={cn('border-primary text-primary hover:text-primary w-fit')}&gt;Back&lt;/Button&gt; <br>
+            &lt;/Link&gt; <br>
+ <br>
+            &lt;Table&gt; <br>
+                &lt;TableHeader className={cn('bg-primary')}&gt; <br>
+                    &lt;TableRow&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Customer ID&lt;/TableHead&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Name&lt;/TableHead&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Email&lt;/TableHead&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Contact Number&lt;/TableHead&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Status&lt;/TableHead&gt; <br>
+                    &lt;/TableRow&gt; <br>
+                &lt;/TableHeader&gt; <br>
+                &lt;TableBody&gt; <br>
+                    &lt;TableRow&gt; <br>
+                        &lt;TableCell className="font-medium"&gt;{supplier?.supplierId}&lt;/TableCell&gt; <br>
+                        &lt;TableCell&gt;{supplier?.name}&lt;/TableCell&gt; <br>
+                        &lt;TableCell&gt;{supplier?.email}&lt;/TableCell&gt; <br>
+                        &lt;TableCell&gt;{supplier?.phoneNumber}&lt;/TableCell&gt; <br>
+                        &lt;TableCell&gt;{supplier?.isActive ? "Active" : "Inactive"}&lt;/TableCell&gt; <br>
+                    &lt;/TableRow&gt; <br>
+                &lt;/TableBody&gt; <br>
+            &lt;/Table&gt; <br>
+ <br>
+            &lt;form className='grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8'&gt; <br>
+                &lt;label htmlFor="spoc"&gt; <br>
+                    &lt;p className='font-medium mb-1'&gt;SPOC&lt;/p&gt; <br>
+                    &lt;Input readOnly={readOnly} value={supplier?.spoc} type="text" id="spoc" placeholder="SPOC" required /&gt; <br>
+                &lt;/label&gt; <br>
+                &lt;label htmlFor="date"&gt; <br>
+                    &lt;p className='font-medium mb-1'&gt;Date Joined&lt;/p&gt; <br>
+                    &lt;Input readOnly={readOnly} value={dayjs(supplier?.createdDate).format("YYYY-MM-DD")} type="date" id="date" placeholder="date" required /&gt; <br>
+                &lt;/label&gt; <br>
+                &lt;label htmlFor="yearOperation"&gt; <br>
+                    &lt;p className='font-medium mb-1'&gt;Years in Operation&lt;/p&gt; <br>
+                    &lt;Input readOnly={readOnly} defaultValue={supplier?.yearsInOperation} type="text" id="yearOperation" placeholder="Years in Operation" required /&gt; <br>
+                &lt;/label&gt; <br>
+                &lt;label htmlFor="brandDealings" className='col-span-2'&gt; <br>
+                    &lt;p className='font-medium mb-1'&gt;Brand Dealings&lt;/p&gt; <br>
+                    &lt;AdminBrandSelect defaultValue={supplier?.brands.map(e =&gt; e.brandId)} readOnly={readOnly} /&gt; <br>
+                &lt;/label&gt; <br>
+                &lt;label htmlFor="address" className='col-span-full'&gt; <br>
+                    &lt;p className='font-medium mb-1'&gt;Address&lt;/p&gt; <br>
+                    &lt;Textarea readOnly={readOnly} defaultValue={supplier?.address} id="address" placeholder="Address" required rows={5} /&gt; <br>
+                &lt;/label&gt; <br>
+            &lt;/form&gt; <br>
+ <br>
+            &lt;Table&gt; <br>
+                &lt;TableHeader className={cn('bg-primary')}&gt; <br>
+                    &lt;TableRow&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Product ID&lt;/TableHead&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Name&lt;/TableHead&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Category&lt;/TableHead&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Brand&lt;/TableHead&gt; <br>
+                        &lt;TableHead className={cn('text-white')}&gt;Price&lt;/TableHead&gt; <br>
+                    &lt;/TableRow&gt; <br>
+                &lt;/TableHeader&gt; <br>
+                &lt;TableBody&gt; <br>
+                    &lt;TableRow&gt; <br>
+                        &lt;TableCell className="font-medium"&gt;RS012588&lt;/TableCell&gt; <br>
+                        &lt;TableCell&gt;Relaxa Acrylic Bathtub&lt;/TableCell&gt; <br>
+                        &lt;TableCell&gt;Bathtub&lt;/TableCell&gt; <br>
+                        &lt;TableCell&gt;Hindware&lt;/TableCell&gt; <br>
+                        &lt;TableCell&gt; <br>
+                            {(18999).toLocaleString('en-IN', { <br>
+                                currency: 'INR', <br>
+                                style: 'currency', <br>
+                            })} <br>
+                        &lt;/TableCell&gt; <br>
+                    &lt;/TableRow&gt; <br>
+                &lt;/TableBody&gt; <br>
+            &lt;/Table&gt; <br>
+ <br>
+            &lt;div className='flex w-full gap-4 items-center justify-center'&gt; <br>
+                &lt;Button size={'lg'} variant={'destructive'}&gt;Delete Account&lt;/Button&gt; <br>
+                &lt;Button size={'lg'} onClick={() =&gt; { <br>
+                    setReadOnly(!readOnly); <br>
+                }}&gt; <br>
+                    { <br>
+                        readOnly ? 'Edit' : 'Save' <br>
+                    } <br>
+                &lt;/Button&gt; <br>
+            &lt;/div&gt; <br>
+        &lt;/div&gt; <br>
+    ) <br>
+}    <br>
+                            </code>
+                        <h2 class="mb-2 text-xl font-semibold">State Management</h2>
+                        The component uses React's useState hook to manage its internal state:
+                        <code>
+                            const [readOnly, setReadOnly] = useState(true);<br>
+const [supplier, setSupplier] = useState&lt;SupplierType&gt;();<br>
+                        </code>
+                        <li>
+                            readOnly: A boolean state to toggle the read-only mode of the form.
+                        </li>
+                        <li>
+                            supplier: An object to store supplier details fetched from the API.
+                        </li>
+                        <br>
+                        <h2 class="mb-2 text-xl font-semibold">Effects</h2>
+                        The component uses React's useEffect hook to fetch supplier data when the component mounts or
+                        when supplierId changes:
+                        <code>
+                            useEffect(() =&gt; { <br>
+                                async function getSupplier() { <br>
+                                    const response = await fetch(${process.env.NEXT_PUBLIC_API_URL}/admin/suppliers/${supplierId}, { <br>
+                                        method: 'GET', <br>
+                                        headers: { <br>
+                                            'Content-Type': 'application/json', <br>
+                                            'Authorization': Bearer ${cookies?.get('adminToken')} <br>
+                                        } <br>
+                                    }); <br>
+                                    const data = await response.json(); <br>
+                                    setSupplier(data); <br>
+                                } <br>
+                                getSupplier(); <br>
+                            }, [supplierId]);    <br>
+                        </code>
+                        <br>
+                        <h2> class="mb-2 text-xl font-semibold">Form Handeling :</h2>
+                        The form within the component displays supplier details and allows for editing. The form fields
+                        are conditionally read-only based on the readOnly state:
+                        <code>
+                            &lt;form className='grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8'&gt; <br>
+    &lt;label htmlFor="spoc"&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;SPOC&lt;/p&gt; <br>
+        &lt;Input readOnly={readOnly} value={supplier?.spoc} type="text" id="spoc" placeholder="SPOC" required /&gt; <br>
+    &lt;/label&gt; <br>
+    &lt;label htmlFor="date"&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;Date Joined&lt;/p&gt; <br>
+        &lt;Input readOnly={readOnly} value={dayjs(supplier?.createdDate).format("YYYY-MM-DD")} type="date" id="date" placeholder="date" required /&gt; <br>
+    &lt;/label&gt; <br>
+    &lt;label htmlFor="yearOperation"&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;Years in Operation&lt;/p&gt; <br>
+        &lt;Input readOnly={readOnly} defaultValue={supplier?.yearsInOperation} type="text" id="yearOperation" placeholder="Years in Operation" required /&gt; <br>
+    &lt;/label&gt; <br>
+    &lt;label htmlFor="brandDealings" className='col-span-2'&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;Brand Dealings&lt;/p&gt; <br>
+        &lt;AdminBrandSelect defaultValue={supplier?.brands.map(e =&gt; e.brandId)} readOnly={readOnly} /&gt; <br>
+    &lt;/label&gt; <br>
+    &lt;label htmlFor="address" className='col-span-full'&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;Address&lt;/p&gt; <br>
+        &lt;Textarea readOnly={readOnly} defaultValue={supplier?.address} id="address" placeholder="Address" required rows={5} /&gt; <br>
+    &lt;/label&gt; <br>
+&lt;/form&gt; <br>
+                        </code>
+                        <h2 class="mb-2 text-xl font-semibold">UI Elements</h2>
+                        The component includes various UI elements such as buttons, inputs, and tables to display
+                        supplier details and products.
+                        <h2 class="mb-2 text-xl font-semibold">Back Button</h2>
+                        A button to navigate back to the suppliers list: <br>
+                        <code>
+                            &lt;Link href={/admin/suppliers} className={cn('absolute -top-16 right-2 block')}&gt; <br>
+    &lt;Button size={'sm'} variant={'outline'} className={cn('border-primary text-primary hover:text-primary w-fit')}&gt;Back&lt;/Button&gt; <br>
+&lt;/Link&gt; <br>
+                        </code>
+                        <h2 class="mb-2 text-xl font-semibold">Tables</h2>
+                        The component displays supplier details and product information in tables:
+                        <h2 class="mb-2 text-l font-semibold">Supplier Details Table</h2>
+                        <code>
+                            &lt;Table&gt; <br>
+                            &lt;TableHeader className={cn('bg-primary')}&gt; <br>
+                                &lt;TableRow&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Customer ID&lt;/TableHead&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Name&lt;/TableHead&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Email&lt;/TableHead&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Contact Number&lt;/TableHead&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Status&lt;/TableHead&gt; <br>
+                                &lt;/TableRow&gt; <br>
+                            &lt;/TableHeader&gt; <br>
+                            &lt;TableBody&gt; <br>
+                                &lt;TableRow&gt; <br>
+                                    &lt;TableCell className="font-medium"&gt;{supplier?.supplierId}&lt;/TableCell&gt; <br>
+                                    &lt;TableCell&gt;{supplier?.name}&lt;/TableCell&gt; <br>
+                                    &lt;TableCell&gt;{supplier?.email}&lt;/TableCell&gt; <br>
+                                    &lt;TableCell&gt;{supplier?.phoneNumber}&lt;/TableCell&gt; <br>
+                                    &lt;TableCell&gt;{supplier?.isActive ? "Active" : "Inactive"}&lt;/TableCell&gt; <br>
+                                &lt;/TableRow&gt; <br>
+                            &lt;/TableBody&gt; <br>
+                        &lt;/Table&gt; <br>
+                        </code>
+
+                        <h2 class="mb-2 text-l font-semibold">Product Table</h2>
+                        <code>
+                        &lt;Table&gt; <br>
+    &lt;TableHeader className={cn('bg-primary')}&gt; <br>
+        &lt;TableRow&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Product ID&lt;/TableHead&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Name&lt;/TableHead&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Category&lt;/TableHead&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Brand&lt;/TableHead&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Price&lt;/TableHead&gt; <br>
+        &lt;/TableRow&gt; <br>
+    &lt;/TableHeader&gt; <br>
+    &lt;TableBody&gt; <br>
+        &lt;TableRow&gt; <br>
+            &lt;TableCell className="font-medium"&gt;RS012588&lt;/TableCell&gt; <br>
+            &lt;TableCell&gt;Relaxa Acrylic Bathtub&lt;/TableCell&gt; <br>
+            &lt;TableCell&gt;Bathtub&lt;/TableCell&gt; <br>
+            &lt;TableCell&gt;Hindware&lt;/TableCell&gt; <br>
+            &lt;TableCell&gt; <br>
+                {(18999).toLocaleString('en-IN', { <br>
+                    currency: 'INR', <br>
+                    style: 'currency', <br>
+                })} <br>
+            &lt;/TableCell&gt; <br>
+        &lt;/TableRow&gt; <br>
+    &lt;/TableBody&gt; <br>
+&lt;/Table&gt; <br>
+                    </code>
+                        <h2 class="mb-2 text-xl font-semibold">Buttons</h2>
+                        The component includes buttons for editing and deleting supplier information:
+                        <code>
+                        &lt;div className='flex w-full gap-4 items-center justify-center'&gt; <br>
+                        &lt;Button size={'lg'} variant={'destructive'}&gt;Delete Account&lt;/Button&gt; <br>
+                        &lt;Button size={'lg'} onClick={() =&gt; { <br>
+                            setReadOnly(!readOnly); <br>
+                        }}&gt; <br>
+                            { <br>
+                                readOnly ? 'Edit' : 'Save' <br>
+                            } <br>
+                        &lt;/Button&gt; <br>
+                    &lt;/div&gt;  <br>
+                     </code>
+                        <br>
+                        <li>
+                            Edit/Save Button: Toggles the read-only state of the form.
+                        </li>
+                        <li>
+                            Delete Button: Placeholder for functionality to delete the supplier account.
+                        </li>
+                        <br>
+                        <h2 class="mb-2 text-xl font-semibold">Usage</h2>
+                        To use the SupplierDetails component, import it into a page and pass the supplierId parameter:
+                        <code>
+                    import SupplierDetails from './SupplierDetails'; <br>
+export default function SupplierPage({ params }) { <br>
+    return &lt;SupplierDetails params={params} /&gt;; <br>
+} <br>
+                </code>
+                    </ul>
+                    <h1 class="text-3xl font-semibold">WEBSOURCECODE/FRONTEND/SRC/APP/Admin/ dashboard/RFQS/page.tsx
+                    </h1>
+                    <h2 class="mb-2 text-xl font-semibold">Components structure</h2>
+                    The RFQs component is structured as follows:
+                    <ul class="max-w-2xl space-y-1 list-disc list-inside dark:text-gray-400">
+                        <li>
+                            Importing Dependencies
+                        </li>
+                        <li>
+                            Defining the QuoteType Type
+                        </li>
+                        <li>
+                            Fetching Data from the API
+                        </li>
+                        <li>
+                            Rendering the Component
+                        </li>
+                        <h2 class="mb-2 text-xl font-semibold">Importing Dependencies</h2>
+                        The component imports necessary dependencies, including UI components for tables and buttons, utility functions, and external libraries:
+                        <code>
+                            const [readOnly, setReadOnly] = useState(true);<br>
+const [supplier, setSupplier] = useState&lt;SupplierType&gt;();<br>
+                        </code>
+                        <li>
+                            readOnly: A boolean state to toggle the read-only mode of the form.
+                        </li>
+                        <li>
+                            supplier: An object to store supplier details fetched from the API.
+                        </li>
+                        <br>
+                        <h2 class="mb-2 text-xl font-semibold">Effects</h2>
+                        The component uses React's useEffect hook to fetch supplier data when the component mounts or
+                        when supplierId changes:
+                        <code>
+                            useEffect(() =&gt; { <br>
+                                async function getSupplier() { <br>
+                                    const response = await fetch(${process.env.NEXT_PUBLIC_API_URL}/admin/suppliers/${supplierId}, { <br>
+                                        method: 'GET', <br>
+                                        headers: { <br>
+                                            'Content-Type': 'application/json', <br>
+                                            'Authorization': Bearer ${cookies?.get('adminToken')} <br>
+                                        } <br>
+                                    }); <br>
+                                    const data = await response.json(); <br>
+                                    setSupplier(data); <br>
+                                } <br>
+                                getSupplier(); <br>
+                            }, [supplierId]);    <br>
+                        </code>
+                        <br>
+                        <h2> class="mb-2 text-xl font-semibold">Form Handeling :</h2>
+                        The form within the component displays supplier details and allows for editing. The form fields
+                        are conditionally read-only based on the readOnly state:
+                        <code>
+                            &lt;form className='grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8'&gt; <br>
+    &lt;label htmlFor="spoc"&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;SPOC&lt;/p&gt; <br>
+        &lt;Input readOnly={readOnly} value={supplier?.spoc} type="text" id="spoc" placeholder="SPOC" required /&gt; <br>
+    &lt;/label&gt; <br>
+    &lt;label htmlFor="date"&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;Date Joined&lt;/p&gt; <br>
+        &lt;Input readOnly={readOnly} value={dayjs(supplier?.createdDate).format("YYYY-MM-DD")} type="date" id="date" placeholder="date" required /&gt; <br>
+    &lt;/label&gt; <br>
+    &lt;label htmlFor="yearOperation"&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;Years in Operation&lt;/p&gt; <br>
+        &lt;Input readOnly={readOnly} defaultValue={supplier?.yearsInOperation} type="text" id="yearOperation" placeholder="Years in Operation" required /&gt; <br>
+    &lt;/label&gt; <br>
+    &lt;label htmlFor="brandDealings" className='col-span-2'&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;Brand Dealings&lt;/p&gt; <br>
+        &lt;AdminBrandSelect defaultValue={supplier?.brands.map(e =&gt; e.brandId)} readOnly={readOnly} /&gt; <br>
+    &lt;/label&gt; <br>
+    &lt;label htmlFor="address" className='col-span-full'&gt; <br>
+        &lt;p className='font-medium mb-1'&gt;Address&lt;/p&gt; <br>
+        &lt;Textarea readOnly={readOnly} defaultValue={supplier?.address} id="address" placeholder="Address" required rows={5} /&gt; <br>
+    &lt;/label&gt; <br>
+&lt;/form&gt; <br>
+                        </code>
+                        <h2 class="mb-2 text-xl font-semibold">UI Elements</h2>
+                        The component includes various UI elements such as buttons, inputs, and tables to display
+                        supplier details and products.
+                        <h2 class="mb-2 text-xl font-semibold">Back Button</h2>
+                        A button to navigate back to the suppliers list: <br>
+                        <code>
+                            &lt;Link href={/admin/suppliers} className={cn('absolute -top-16 right-2 block')}&gt; <br>
+    &lt;Button size={'sm'} variant={'outline'} className={cn('border-primary text-primary hover:text-primary w-fit')}&gt;Back&lt;/Button&gt; <br>
+&lt;/Link&gt; <br>
+                        </code>
+                        <h2 class="mb-2 text-xl font-semibold">Tables</h2>
+                        The component displays supplier details and product information in tables:
+                        <h2 class="mb-2 text-l font-semibold">Supplier Details Table</h2>
+                        <code>
+                            &lt;Table&gt; <br>
+                            &lt;TableHeader className={cn('bg-primary')}&gt; <br>
+                                &lt;TableRow&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Customer ID&lt;/TableHead&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Name&lt;/TableHead&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Email&lt;/TableHead&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Contact Number&lt;/TableHead&gt; <br>
+                                    &lt;TableHead className={cn('text-white')}&gt;Status&lt;/TableHead&gt; <br>
+                                &lt;/TableRow&gt; <br>
+                            &lt;/TableHeader&gt; <br>
+                            &lt;TableBody&gt; <br>
+                                &lt;TableRow&gt; <br>
+                                    &lt;TableCell className="font-medium"&gt;{supplier?.supplierId}&lt;/TableCell&gt; <br>
+                                    &lt;TableCell&gt;{supplier?.name}&lt;/TableCell&gt; <br>
+                                    &lt;TableCell&gt;{supplier?.email}&lt;/TableCell&gt; <br>
+                                    &lt;TableCell&gt;{supplier?.phoneNumber}&lt;/TableCell&gt; <br>
+                                    &lt;TableCell&gt;{supplier?.isActive ? "Active" : "Inactive"}&lt;/TableCell&gt; <br>
+                                &lt;/TableRow&gt; <br>
+                            &lt;/TableBody&gt; <br>
+                        &lt;/Table&gt; <br>
+                        </code>
+
+                        <h2 class="mb-2 text-l font-semibold">Product Table</h2>
+                        <code>
+                        &lt;Table&gt; <br>
+    &lt;TableHeader className={cn('bg-primary')}&gt; <br>
+        &lt;TableRow&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Product ID&lt;/TableHead&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Name&lt;/TableHead&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Category&lt;/TableHead&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Brand&lt;/TableHead&gt; <br>
+            &lt;TableHead className={cn('text-white')}&gt;Price&lt;/TableHead&gt; <br>
+        &lt;/TableRow&gt; <br>
+    &lt;/TableHeader&gt; <br>
+    &lt;TableBody&gt; <br>
+        &lt;TableRow&gt; <br>
+            &lt;TableCell className="font-medium"&gt;RS012588&lt;/TableCell&gt; <br>
+            &lt;TableCell&gt;Relaxa Acrylic Bathtub&lt;/TableCell&gt; <br>
+            &lt;TableCell&gt;Bathtub&lt;/TableCell&gt; <br>
+            &lt;TableCell&gt;Hindware&lt;/TableCell&gt; <br>
+            &lt;TableCell&gt; <br>
+                {(18999).toLocaleString('en-IN', { <br>
+                    currency: 'INR', <br>
+                    style: 'currency', <br>
+                })} <br>
+            &lt;/TableCell&gt; <br>
+        &lt;/TableRow&gt; <br>
+    &lt;/TableBody&gt; <br>
+&lt;/Table&gt; <br>
+                    </code>
+                        <h2 class="mb-2 text-xl font-semibold">Buttons</h2>
+                        The component includes buttons for editing and deleting supplier information:
+                        <code>
+                        &lt;div className='flex w-full gap-4 items-center justify-center'&gt; <br>
+                        &lt;Button size={'lg'} variant={'destructive'}&gt;Delete Account&lt;/Button&gt; <br>
+                        &lt;Button size={'lg'} onClick={() =&gt; { <br>
+                            setReadOnly(!readOnly); <br>
+                        }}&gt; <br>
+                            { <br>
+                                readOnly ? 'Edit' : 'Save' <br>
+                            } <br>
+                        &lt;/Button&gt; <br>
+                    &lt;/div&gt;  <br>
+                     </code>
+                        <br>
+                        <li>
+                            Edit/Save Button: Toggles the read-only state of the form.
+                        </li>
+                        <li>
+                            Delete Button: Placeholder for functionality to delete the supplier account.
+                        </li>
+                        <br>
+                        <h2 class="mb-2 text-xl font-semibold">Usage</h2>
+                        To use the SupplierDetails component, import it into a page and pass the supplierId parameter:
+                        <code>
+                    import SupplierDetails from './SupplierDetails'; <br>
+export default function SupplierPage({ params }) { <br>
+    return &lt;SupplierDetails params={params} /&gt;; <br>
+} <br>
+                </code>
                     </ul>
                 </div>
             </div>

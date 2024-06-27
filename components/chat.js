@@ -31,8 +31,8 @@ const chat = `
             <form id="chat-form" class='sticky bottom-0 px-4'>
                 <div
                     class="flex items-center justify-center w-full px-4 pr-4 overflow-hidden max-h-60 grow sm:rounded-md sm:border">
-                    <textarea id="chat-input" tabIndex="0" rows="1" placeholder="Send a message."
-                        class="min-h-[60px] w-full resize-none bg-transparent px-2 py-[1.3rem] focus-within:outline-none sm:text-sm"></textarea>
+                    <input id="chat-input" tabIndex="0" rows="1" placeholder="Send a message."
+                        class="min-h-[60px] w-full resize-none bg-transparent px-2 py-[1.3rem] focus-within:outline-none sm:text-sm"></input>
                     <button type="submit" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Send</button>
             </form>
 `;
